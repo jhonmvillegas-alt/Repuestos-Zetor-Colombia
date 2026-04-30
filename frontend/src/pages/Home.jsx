@@ -101,8 +101,7 @@ export default function Home() {
               loop
               muted
               playsInline
-              className="absolute inset-0 h-full w-full object-cover"
-              poster="https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&q=80&w=1600"
+              className="absolute inset-0 h-full w-full object-cover bg-carbon"
             />
             <div className="absolute inset-0 bg-gradient-to-bl from-black/20 via-transparent to-black/40" />
             <div className="relative z-10 h-full flex flex-col justify-end p-6 sm:p-10 lg:p-14">
