@@ -46,8 +46,9 @@ export default function Contacto() {
               <h3 className="font-display font-black uppercase text-xl tracking-tight">Información de contacto</h3>
               <ul className="mt-4 space-y-3 text-sm">
                 <li className="flex items-start gap-3"><MapPin className="h-4 w-4 text-zetor-red mt-0.5" /> Calle 19B 35-2, Bogotá, Colombia</li>
-                <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-zetor-red" /> <a href="tel:+573202453457" className="hover:text-zetor-red">{formatWhatsAppDisplay()}</a></li>
-                <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-zetor-red" /> contacto@almacenzetorrepuestos.com</li>
+                <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-zetor-red" /> <a href="tel:+573202453457" className="hover:text-zetor-red">{formatWhatsAppDisplay()} (WhatsApp)</a></li>
+                <li className="flex items-center gap-3"><Phone className="h-4 w-4 text-zetor-red" /> <a href="tel:+6014689088" className="hover:text-zetor-red">+57 (601) 468 9088 (Fijo)</a></li>
+                <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-zetor-red" /> <a href="mailto:zetorrepuestos@gmail.com" className="hover:text-zetor-red">zetorrepuestos@gmail.com</a></li>
                 <li className="flex items-start gap-3"><Clock className="h-4 w-4 text-zetor-red mt-0.5" /> Lun – Vie 8:00–17:30 · Sáb 8:00–13:00</li>
               </ul>
               <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 bg-whatsapp text-white font-bold uppercase tracking-widest px-5 py-3 rounded-sm hover:bg-[#1EBE5A]" data-testid="contacto-whatsapp-cta"><MessageCircle className="h-4 w-4" /> Escribir a WhatsApp</a>

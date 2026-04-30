@@ -63,8 +63,12 @@ export default function Footer() {
               <a href="tel:+573202453457" className="hover:text-white">{formatWhatsAppDisplay()}</a>
             </li>
             <li className="flex items-center gap-2">
+              <Phone className="h-4 w-4 text-zetor-red shrink-0" />
+              <a href="tel:+6014689088" className="hover:text-white">+57 (601) 468 9088</a>
+            </li>
+            <li className="flex items-center gap-2">
               <Mail className="h-4 w-4 text-zetor-red shrink-0" />
-              <a href="mailto:contacto@almacenzetorrepuestos.com" className="hover:text-white">contacto@almacenzetorrepuestos.com</a>
+              <a href="mailto:zetorrepuestos@gmail.com" className="hover:text-white">zetorrepuestos@gmail.com</a>
             </li>
             <li className="flex items-start gap-2">
               <Clock className="h-4 w-4 mt-0.5 text-zetor-red shrink-0" />
