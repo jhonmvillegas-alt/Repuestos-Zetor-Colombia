@@ -20,7 +20,7 @@ export default function AdminLayout() {
       <header className="bg-carbon text-white border-b border-zinc-800 sticky top-0 z-30">
         <div className="px-4 h-16 flex items-center justify-between gap-4">
           <Link to="/admin" className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-sm bg-zetor-red grid place-items-center font-display font-black text-lg">Z</div>
+            <img src="/zetor-logo.png" alt="Zetor" className="h-9 w-9 object-contain bg-white rounded-full p-0.5" />
             <div className="leading-tight">
               <p className="font-display font-black uppercase tracking-tight text-sm">Admin Zetor</p>
               <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">Panel administrativo</p>

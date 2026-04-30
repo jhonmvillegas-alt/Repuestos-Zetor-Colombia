@@ -51,9 +51,7 @@ export default function Header() {
       <div className="bg-carbon text-white border-b border-zinc-800">
         <div className="mx-auto max-w-7xl px-4 h-16 sm:h-20 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3 shrink-0" data-testid="logo-link">
-            <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-sm bg-zetor-red text-white grid place-items-center font-display font-black text-xl">
-              Z
-            </div>
+            <img src="/zetor-logo.png" alt="Zetor" className="h-11 w-11 sm:h-12 sm:w-12 object-contain bg-white rounded-full p-0.5" />
             <div className="leading-tight">
               <div className="font-display font-black tracking-tight text-sm sm:text-base uppercase whitespace-nowrap">
                 Almacén de Repuestos Zetor

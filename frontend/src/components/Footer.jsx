@@ -10,7 +10,7 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 grid gap-10 md:grid-cols-12">
         <div className="md:col-span-4">
           <Link to="/" className="flex items-center gap-3">
-            <div className="h-11 w-11 rounded-sm bg-zetor-red grid place-items-center font-display font-black text-xl text-white">Z</div>
+            <img src="/zetor-logo.png" alt="Zetor" className="h-12 w-12 object-contain bg-white rounded-full p-0.5" />
             <div>
               <div className="font-display font-black text-base uppercase text-white tracking-tight">Almacén de Repuestos Zetor</div>
               <div className="text-[10px] uppercase tracking-[0.2em] text-zetor-red font-bold">Importador oficial · Colombia</div>
