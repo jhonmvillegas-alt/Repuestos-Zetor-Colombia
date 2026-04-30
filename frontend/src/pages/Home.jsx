@@ -107,13 +107,13 @@ export default function Home() {
             <div className="absolute inset-0 bg-gradient-to-bl from-black/40 via-transparent to-black/70" />
             <div className="relative z-10 h-full flex flex-col justify-between p-6 sm:p-10 lg:p-14">
               <div>
-                <p className="text-zetor-red text-[11px] sm:text-xs uppercase tracking-[0.3em] font-bold">800+ referencias</p>
+                <p className="text-zetor-red text-[11px] sm:text-xs uppercase tracking-[0.3em] font-bold">{stats.total || 0}+ referencias y creciendo</p>
                 <h2 className="mt-3 font-display font-black uppercase text-white text-3xl sm:text-4xl lg:text-5xl leading-tight tracking-tight max-w-md">
                   Asesoría técnica que <span className="text-zetor-red">protege tu inversión</span>
                 </h2>
               </div>
               <div className="self-end max-w-xs bg-white text-carbon p-5 rounded-sm border-l-4 border-zetor-red shadow-2xl" data-testid="hero-stat-card">
-                <p className="font-display font-black text-3xl sm:text-4xl">{stats.total || "800"}+</p>
+                <p className="font-display font-black text-3xl sm:text-4xl">{stats.total || 0}+</p>
                 <p className="text-[10px] uppercase tracking-widest font-bold text-zinc-600 mt-1">Referencias disponibles</p>
                 <Link to="/asesoria" className="mt-3 inline-flex items-center gap-1 text-[11px] uppercase font-bold tracking-widest text-zetor-red hover:underline">
                   Solicitar asesoría <ArrowRight className="h-3.5 w-3.5" />
