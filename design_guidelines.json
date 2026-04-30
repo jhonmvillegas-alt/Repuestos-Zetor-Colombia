@@ -1,0 +1,94 @@
+{
+  "theme_and_archetype": {
+    "theme": "Hybrid (Dark Marketing / Light Catalog)",
+    "archetype": "Archetype 4 (Swiss & High-Contrast) + Archetype 2 (Performance Pro)",
+    "description": "Industrial premium, technical, robust. The design utilizes high-contrast structures. The marketing layers (Hero, Navbar, Footer, About) will use deep Carbon Black to feel premium and heavy. The Catalog and Data grids will use stark White to ensure maximum legibility and trust in the technical specifications.",
+    "emotional_tone": "Authority, Precision, Trust, Durability",
+    "target_audience": "Tractor owners, mechanics, and farmers in Colombia looking for exact technical parts and specialized advice."
+  },
+  "colors": {
+    "brand": {
+      "primary": "#D91E27",
+      "primary_hover": "#B91820",
+      "black": "#1A1A1A",
+      "white": "#FFFFFF",
+      "whatsapp": "#25D366",
+      "whatsapp_hover": "#1EBE5A"
+    },
+    "dark_mode_sections": {
+      "background": "#1A1A1A",
+      "surface": "#27272A",
+      "border": "#3F3F46",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#A1A1AA"
+    },
+    "light_mode_sections": {
+      "background": "#FFFFFF",
+      "surface": "#F4F4F5",
+      "border": "#E4E4E7",
+      "text_primary": "#1A1A1A",
+      "text_secondary": "#52525B"
+    }
+  },
+  "typography": {
+    "headings": {
+      "family": "Roboto, sans-serif",
+      "weight": "900",
+      "tracking": "tracking-tighter",
+      "style": "uppercase, rigid, bold",
+      "usage_rules": "Do not center-align unless structurally necessary. Use for Hero H1, Section H2s, and key call-outs."
+    },
+    "body": {
+      "family": "Inter, sans-serif",
+      "weight": "400",
+      "tracking": "tracking-normal",
+      "style": "highly legible, neutral",
+      "usage_rules": "Use for all technical specs, product descriptions, and standard text."
+    },
+    "hierarchy": {
+      "h1": "text-5xl sm:text-6xl md:text-7xl font-black uppercase tracking-tighter",
+      "h2": "text-3xl sm:text-4xl font-black uppercase tracking-tight",
+      "h3": "text-xl sm:text-2xl font-bold uppercase",
+      "body": "text-base text-zinc-600 dark:text-zinc-400",
+      "technical_label": "text-xs font-bold uppercase tracking-widest text-zinc-500"
+    }
+  },
+  "spacing_and_layout": {
+    "global": "Mobile-first responsive grids. Generous vertical rhythm between sections (py-20 to py-32).",
+    "catalog_grid": "Grid mode 'Control Room' - Tight gaps (gap-4 or gap-6). Cards must stretch to identical heights. High density.",
+    "marketing_grid": "Grid mode 'Tetris' - Asymmetrical layouts for the About and Feature sections.",
+    "borders_and_radii": "Sharp industrial edges. Maximum border radius is rounded-sm (2px) or rounded-none to maintain mechanical rigidity."
+  },
+  "components": {
+    "navbar": "Dark background (#1A1A1A) with sticky positioning. Must include top red announcement bar ('Importador Oficial Zetor · Envío a todo Colombia' + WhatsApp number).",
+    "hero": "Strict 50/50 split screen on desktop. Left side: Text, WhatsApp CTA, and image. Right side: Video with technical annotations overlay.",
+    "buttons": "Square or very slightly rounded corners (rounded-sm). High contrast. Primary CTA is Zetor Red. WhatsApp CTA is vibrant green (#25D366). Always include explicit hover states.",
+    "product_cards": "Light background (#FFFFFF). 1px solid border (#E4E4E7). Image on top, technical name (H3), SKU, system tags, and full-width WhatsApp button at the bottom.",
+    "floating_whatsapp": "Persistent z-50 bottom-right placement. Must use vibrant green with pulse animation."
+  },
+  "media_urls": {
+    "hero": {
+      "left_image": "https://almacenzetorrepuestos.com/wp-content/uploads/2026/04/Gemini_Generated_Image_n0vlzqn0vlzqn0vl-1-scaled.png",
+      "right_video": "https://almacenzetorrepuestos.com/wp-content/uploads/2026/04/Agent_video_Pippit_20260429224100.mp4"
+    },
+    "categories": {
+      "motor": "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTZ8MHwxfHNlYXJjaHw0fHx0cmFjdG9yJTIwZW5naW5lJTIwbWFjaGluZXJ5fGVufDB8fHx8MTc3NzU4NTE4M3ww&ixlib=rb-4.1.0&q=85",
+      "hidraulico": "https://images.unsplash.com/photo-1759692071969-c32285cffc40?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwxfHxtZWNoYW5pYyUyMHJlcGFpcmluZyUyMGhlYXZ5JTIwbWFjaGluZXJ5fGVufDB8fHx8MTc3NzU4NTE4M3ww&ixlib=rb-4.1.0&q=85",
+      "transmision": "https://images.unsplash.com/photo-1667339240140-1aee60bea0e5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTZ8MHwxfHNlYXJjaHwyfHx0cmFjdG9yJTIwZW5naW5lJTIwbWFjaGluZXJ5fGVufDB8fHx8MTc3NzU4NTE4M3ww&ixlib=rb-4.1.0&q=85"
+    },
+    "about_and_technical": {
+      "mechanic_founder": "https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1OTV8MHwxfHNlYXJjaHwyfHxtZWNoYW5pYyUyMHJlcGFpcmluZyUyMGhlYXZ5JTIwbWFjaGluZXJ5fGVufDB8fHx8MTc3NzU4NTE4M3ww&ixlib=rb-4.1.0&q=85",
+      "tractor_field": "https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA3MDB8MHwxfHNlYXJjaHwxfHxmYXJtJTIwdHJhY3RvciUyMGZpZWxkfGVufDB8fHx8MTc3NzU4NTE4M3ww&ixlib=rb-4.1.0&q=85"
+    }
+  },
+  "instructions_to_main_agent": [
+    "Strictly enforce the Zetor Red (#D91E27) and Carbon Black (#1A1A1A) palette. Do not introduce stray colors.",
+    "Use standard Tailwind utilities to implement Roboto Black (font-black) for titles and Inter for body text.",
+    "Do not use generic Shadcn Card radii (rounded-lg/xl); override them to rounded-sm or rounded-none for a sharper industrial look.",
+    "Ensure all interactive components (buttons, links, product cards) have the `data-testid` attribute included.",
+    "Implement the 'Control Room' grid layout for the product catalog to maximize data density.",
+    "Set the header navbar to be dark (#1A1A1A) and sticky, with the top announcement bar fixed in Zetor Red.",
+    "Hero section must precisely mirror the split-screen requirements provided in the prompt.",
+    "Never use placeholder images; rely solely on the URLs provided in this file."
+  ]
+}
