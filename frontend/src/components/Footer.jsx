@@ -12,7 +12,7 @@ export default function Footer() {
           <Link to="/" className="flex items-center gap-3">
             <img src="/zetor-logo.png" alt="Zetor" className="h-12 w-12 object-contain bg-white rounded-full p-0.5" />
             <div>
-              <div className="font-display font-black text-base uppercase text-white tracking-tight">Almacén de Repuestos Zetor</div>
+              <div className="font-display font-black text-base uppercase text-white tracking-tight">Almacén Zetor Repuestos</div>
               <div className="text-[10px] uppercase tracking-[0.2em] text-zetor-red font-bold">Importador oficial · Colombia</div>
             </div>
           </Link>

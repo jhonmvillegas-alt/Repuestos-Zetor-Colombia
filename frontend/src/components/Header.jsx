@@ -54,7 +54,7 @@ export default function Header() {
             <img src="/zetor-logo.png" alt="Zetor" className="h-11 w-11 sm:h-12 sm:w-12 object-contain bg-white rounded-full p-0.5" />
             <div className="leading-tight">
               <div className="font-display font-black tracking-tight text-sm sm:text-base uppercase whitespace-nowrap">
-                Almacén de Repuestos Zetor
+                Almacén Zetor Repuestos
               </div>
               <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-zetor-red font-bold">
                 Importador Oficial · Colombia
