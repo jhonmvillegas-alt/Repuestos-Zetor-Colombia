@@ -12,7 +12,7 @@ export default function Footer() {
           <Link to="/" className="flex items-center gap-3">
             <div className="h-11 w-11 rounded-sm bg-zetor-red grid place-items-center font-display font-black text-xl text-white">Z</div>
             <div>
-              <div className="font-display font-black text-lg uppercase text-white tracking-tight">Repuestos Zetor</div>
+              <div className="font-display font-black text-base uppercase text-white tracking-tight">Almacén de Repuestos Zetor</div>
               <div className="text-[10px] uppercase tracking-[0.2em] text-zetor-red font-bold">Importador oficial · Colombia</div>
             </div>
           </Link>

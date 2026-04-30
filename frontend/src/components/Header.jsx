@@ -55,8 +55,8 @@ export default function Header() {
               Z
             </div>
             <div className="leading-tight">
-              <div className="font-display font-black tracking-tight text-base sm:text-lg uppercase">
-                Repuestos Zetor
+              <div className="font-display font-black tracking-tight text-sm sm:text-base uppercase whitespace-nowrap">
+                Almacén de Repuestos Zetor
               </div>
               <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-zetor-red font-bold">
                 Importador Oficial · Colombia

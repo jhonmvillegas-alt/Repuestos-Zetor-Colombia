@@ -3,6 +3,14 @@ import { Link } from "react-router-dom";
 import { MessageCircle, ChevronRight } from "lucide-react";
 import { productWhatsAppMessage } from "../lib/whatsapp";
 
+const SYSTEM_FALLBACK_IMG = {
+  motor: "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+  hidraulico: "https://images.unsplash.com/photo-1759692071969-c32285cffc40?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+  transmision: "https://images.unsplash.com/photo-1667339240140-1aee60bea0e5?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+  frenos: "https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+  filtros: "https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+};
+
 export default function ProductCard({ product }) {
   if (!product) return null;
   const sysLabels = {
@@ -21,6 +29,10 @@ export default function ProductCard({ product }) {
             alt={product.nombre}
             className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
+            onError={(e) => {
+              const fb = SYSTEM_FALLBACK_IMG[product.sistema];
+              if (fb && e.currentTarget.src !== fb) e.currentTarget.src = fb;
+            }}
           />
         ) : (
           <div className="h-full w-full grid place-items-center text-zinc-400 text-xs uppercase">
