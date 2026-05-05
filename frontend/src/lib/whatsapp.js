@@ -1,10 +1,16 @@
-// Build a WhatsApp deep link with prefilled message
-export const WHATSAPP_NUMBER = "573202453457"; // +57 320 245 3457
+// Build a WhatsApp deep link with prefilled message.
+// The number is fetched at runtime from /api/site/config (env-driven).
+let _whatsappNumber = "573202453457"; // safe fallback while config loads
 
-export const formatWhatsAppDisplay = (n = WHATSAPP_NUMBER) => {
-  // 573202453457 -> +57 320 245 3457
-  if (!n) return "";
-  const clean = n.replace(/\D/g, "");
+export const setWhatsAppNumber = (n) => {
+  if (!n) return;
+  _whatsappNumber = String(n).replace(/\D/g, "");
+};
+
+export const getWhatsAppNumber = () => _whatsappNumber;
+
+export const formatWhatsAppDisplay = (n) => {
+  const clean = String(n || _whatsappNumber).replace(/\D/g, "");
   if (clean.length === 12 && clean.startsWith("57")) {
     return `+57 ${clean.slice(2, 5)} ${clean.slice(5, 8)} ${clean.slice(8)}`;
   }
@@ -13,7 +19,7 @@ export const formatWhatsAppDisplay = (n = WHATSAPP_NUMBER) => {
 
 export const buildWhatsAppUrl = (message) => {
   const encoded = encodeURIComponent(message);
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+  return `https://wa.me/${_whatsappNumber}?text=${encoded}`;
 };
 
 export const productWhatsAppMessage = (product, extras = {}) => {

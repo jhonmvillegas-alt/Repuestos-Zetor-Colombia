@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import api from "../lib/api";
+import { setWhatsAppNumber } from "../lib/whatsapp";
 
 const SiteSettingsContext = createContext({});
 
@@ -19,6 +20,9 @@ export function SiteSettingsProvider({ children }) {
   const [settings, setSettings] = useState(FALLBACKS);
   useEffect(() => {
     api.get("/site/settings").then((r) => setSettings({ ...FALLBACKS, ...r.data })).catch(() => {});
+    api.get("/site/config").then((r) => {
+      if (r.data?.whatsapp) setWhatsAppNumber(r.data.whatsapp);
+    }).catch(() => {});
   }, []);
   return <SiteSettingsContext.Provider value={settings}>{children}</SiteSettingsContext.Provider>;
 }
