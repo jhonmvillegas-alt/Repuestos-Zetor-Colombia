@@ -54,11 +54,14 @@ export default function ProductCard({ product }) {
           {product.nombre}
         </h3>
         <div className="mt-3 flex flex-wrap gap-1">
-          {(product.compatibilidad || []).slice(0, 4).map((m) => (
-            <span key={m} className="text-[10px] font-bold border border-zinc-300 px-1.5 py-0.5 uppercase tracking-wider text-zinc-700">
-              Z{m}
+          {(product.compatibilidad || []).slice(0, 3).map((m) => (
+            <span key={m} className="text-[9px] font-bold border border-zinc-300 px-1.5 py-0.5 uppercase tracking-wider text-zinc-700">
+              {m}
             </span>
           ))}
+          {(product.compatibilidad || []).length > 3 && (
+            <span className="text-[9px] font-bold text-zinc-500 px-1.5 py-0.5">+{product.compatibilidad.length - 3}</span>
+          )}
         </div>
         <div className="mt-4 flex-1" />
         <div className="grid grid-cols-2 gap-2">

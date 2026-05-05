@@ -30,19 +30,20 @@ export default function Header() {
     <header className="sticky top-0 z-40">
       {/* Top red announcement bar */}
       <div className="bg-zetor-red text-white text-xs sm:text-[13px]" data-testid="top-announcement-bar">
-        <div className="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 font-medium">
-            <span className="hidden sm:inline-flex h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
-            <span className="truncate">Importador Oficial Zetor · Envío a todo Colombia</span>
+        <div className="mx-auto max-w-7xl px-3 sm:px-4 py-2 flex items-center justify-between gap-2 sm:gap-3">
+          <div className="flex items-center gap-2 font-medium min-w-0">
+            <span className="hidden sm:inline-flex h-1.5 w-1.5 rounded-full bg-white animate-pulse shrink-0" />
+            <span className="truncate">
+              <span className="hidden sm:inline">Importador Oficial Zetor · </span>Envío a todo Colombia
+            </span>
           </div>
           <a
-            href={`tel:+${"573202453457"}`}
-            className="flex items-center gap-1.5 font-bold hover:underline"
+            href="tel:+573202453457"
+            className="flex items-center gap-1.5 font-bold hover:underline whitespace-nowrap shrink-0"
             data-testid="top-phone-link"
           >
             <Phone className="h-3.5 w-3.5" />
-            <span className="hidden xs:inline">{formatWhatsAppDisplay()}</span>
-            <span className="xs:hidden">+57 320 245 3457</span>
+            <span>+57 320 245 3457</span>
           </a>
         </div>
       </div>

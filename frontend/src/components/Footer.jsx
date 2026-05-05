@@ -44,10 +44,13 @@ export default function Footer() {
         <div className="md:col-span-2">
           <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-zetor-red mb-4">Modelos</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link className="hover:text-white" to="/modelo/5211">Zetor 5211</Link></li>
-            <li><Link className="hover:text-white" to="/modelo/6211">Zetor 6211</Link></li>
-            <li><Link className="hover:text-white" to="/modelo/7211">Zetor 7211</Link></li>
-            <li><Link className="hover:text-white" to="/modelo/8011">Zetor 8011</Link></li>
+            <li><Link className="hover:text-white" to="/modelo/5511-5545">Zetor 5511–5545</Link></li>
+            <li><Link className="hover:text-white" to="/modelo/5711-5745">Zetor 5711–5745</Link></li>
+            <li><Link className="hover:text-white" to="/modelo/6711-6745">Zetor 6711–6745</Link></li>
+            <li><Link className="hover:text-white" to="/modelo/6911-6945">Zetor 6911–6945</Link></li>
+            <li><Link className="hover:text-white" to="/modelo/7011-7045">Zetor 7011–7045</Link></li>
+            <li><Link className="hover:text-white" to="/modelo/7211-7245">Zetor 7211–7245</Link></li>
+            <li><Link className="hover:text-white" to="/modelo/8011-12045">Zetor 8011–12045</Link></li>
           </ul>
         </div>
 

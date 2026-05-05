@@ -11,7 +11,7 @@ const SYSTEMS = [
   { slug: "frenos", label: "Frenos" },
   { slug: "filtros", label: "Filtros" },
 ];
-const MODELS = ["5211", "6211", "7211", "8011"];
+const MODELS = ["5511-5545", "5711-5745", "6711-6745", "6911-6945", "7011-7045", "7211-7245", "8011-12045"];
 
 export default function Catalogo() {
   const [params, setParams] = useSearchParams();
@@ -100,16 +100,16 @@ export default function Catalogo() {
               <div className="grid grid-cols-2 gap-2">
                 <button
                   onClick={() => update("modelo", "")}
-                  className={`px-3 py-2 text-sm font-bold rounded-sm border ${!modelo ? "bg-carbon text-white border-carbon" : "border-zinc-200 hover:border-carbon"}`}
+                  className={`px-3 py-2 text-xs font-bold rounded-sm border ${!modelo ? "bg-carbon text-white border-carbon" : "border-zinc-200 hover:border-carbon"}`}
                   data-testid="filter-modelo-all"
                 >Todos</button>
                 {MODELS.map((m) => (
                   <button
                     key={m}
                     onClick={() => update("modelo", m)}
-                    className={`px-3 py-2 text-sm font-bold rounded-sm border ${modelo === m ? "bg-zetor-red text-white border-zetor-red" : "border-zinc-200 hover:border-carbon"}`}
+                    className={`px-2 py-2 text-[11px] font-bold rounded-sm border whitespace-nowrap ${modelo === m ? "bg-zetor-red text-white border-zetor-red" : "border-zinc-200 hover:border-carbon"}`}
                     data-testid={`filter-modelo-${m}`}
-                  >Z{m}</button>
+                  >{m}</button>
                 ))}
               </div>
             </div>

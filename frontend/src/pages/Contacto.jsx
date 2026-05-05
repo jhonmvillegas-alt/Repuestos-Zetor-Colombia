@@ -84,10 +84,13 @@ export default function Contacto() {
                   <input value={form.ciudad} onChange={(e) => set("ciudad", e.target.value)} placeholder="Ciudad" className="border border-zinc-300 px-3 py-3 text-sm rounded-sm focus:outline-none focus:border-zetor-red" data-testid="contacto-input-ciudad" />
                   <select value={form.modelo_tractor} onChange={(e) => set("modelo_tractor", e.target.value)} className="border border-zinc-300 px-3 py-3 text-sm rounded-sm focus:outline-none focus:border-zetor-red sm:col-span-2 bg-white" data-testid="contacto-input-modelo">
                     <option value="">Modelo de tractor (opcional)</option>
-                    <option value="Zetor 5211">Zetor 5211</option>
-                    <option value="Zetor 6211">Zetor 6211</option>
-                    <option value="Zetor 7211">Zetor 7211</option>
-                    <option value="Zetor 8011">Zetor 8011</option>
+                    <option value="Zetor 5511-5545">Zetor 5511–5545</option>
+                    <option value="Zetor 5711-5745">Zetor 5711–5745</option>
+                    <option value="Zetor 6711-6745">Zetor 6711–6745</option>
+                    <option value="Zetor 6911-6945">Zetor 6911–6945</option>
+                    <option value="Zetor 7011-7045">Zetor 7011–7045</option>
+                    <option value="Zetor 7211-7245">Zetor 7211–7245</option>
+                    <option value="Zetor 8011-12045">Zetor 8011–12045</option>
                     <option value="Otro">Otro</option>
                   </select>
                   <textarea value={form.mensaje} onChange={(e) => set("mensaje", e.target.value)} placeholder="Cuéntanos qué repuesto buscas o tu consulta técnica*" rows={5} className="sm:col-span-2 border border-zinc-300 px-3 py-3 text-sm rounded-sm focus:outline-none focus:border-zetor-red" required data-testid="contacto-input-mensaje" />

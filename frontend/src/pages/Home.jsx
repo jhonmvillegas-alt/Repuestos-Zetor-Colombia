@@ -14,10 +14,13 @@ const SYSTEM_META = {
 };
 
 const MODEL_META = {
-  "5211": { hp: "46 HP", series: "UR I", desc: "Motor 3.1L · Caja 8+2 · Compacto y resistente" },
-  "6211": { hp: "62 HP", series: "UR I", desc: "Motor 3.6L · Versátil para finca y taller" },
-  "7211": { hp: "70 HP", series: "UR I", desc: "Motor 4.5L · Trabajo medio-pesado" },
-  "8011": { hp: "80 HP", series: "UR I", desc: "Motor 4.5L turbo · Alta potencia agrícola" },
+  "5511-5545": { hp: "Serie 55", series: "UR I", desc: "Modelos 5511 a 5545 — finca pequeña y mediana" },
+  "5711-5745": { hp: "Serie 57", series: "UR I", desc: "Modelos 5711 a 5745 — uso versátil" },
+  "6711-6745": { hp: "Serie 67", series: "UR I", desc: "Modelos 6711 a 6745 — trabajo medio" },
+  "6911-6945": { hp: "Serie 69", series: "UR I", desc: "Modelos 6911 a 6945 — alta demanda" },
+  "7011-7045": { hp: "Serie 70", series: "UR I", desc: "Modelos 7011 a 7045 — trabajo pesado" },
+  "7211-7245": { hp: "Serie 72", series: "UR I", desc: "Modelos 7211 a 7245 — agrícola intensivo" },
+  "8011-12045": { hp: "Serie 80–120", series: "UR I", desc: "Modelos 8011 a 12045 — máxima potencia turbo" },
 };
 
 export default function Home() {
@@ -105,7 +108,7 @@ export default function Home() {
             />
             <div className="absolute inset-0 bg-gradient-to-bl from-black/20 via-transparent to-black/40" />
             <div className="relative z-10 h-full flex flex-col justify-end p-6 sm:p-10 lg:p-14">
-              <div className="self-end max-w-[150px] sm:max-w-xs bg-white text-carbon p-2 sm:p-5 rounded-sm border-l-4 border-zetor-red shadow-2xl" data-testid="hero-stat-card">
+              <div className="self-end hidden md:block max-w-[150px] sm:max-w-xs bg-white text-carbon p-2 sm:p-5 rounded-sm border-l-4 border-zetor-red shadow-2xl" data-testid="hero-stat-card">
                 <p className="font-display font-black text-lg sm:text-3xl lg:text-4xl leading-none">800+</p>
                 <p className="text-[8px] sm:text-[10px] uppercase tracking-widest font-bold text-zinc-600 mt-0.5 sm:mt-1">Referencias disponibles</p>
                 <Link to="/asesoria" className="mt-1 sm:mt-3 inline-flex items-center gap-1 text-[9px] sm:text-[11px] uppercase font-bold tracking-widest text-zetor-red hover:underline">
@@ -180,20 +183,20 @@ export default function Home() {
               Selecciona tu modelo y accede al listado completo de repuestos compatibles.
             </p>
           </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {Object.keys(MODEL_META).map((m) => (
               <Link
                 key={m}
                 to={`/modelo/${m}`}
-                className="bg-carbon text-white p-6 rounded-sm flex flex-col gap-3 group hover:bg-zetor-red transition relative overflow-hidden"
+                className="bg-carbon text-white p-5 sm:p-6 rounded-sm flex flex-col gap-3 group hover:bg-zetor-red transition relative overflow-hidden"
                 data-testid={`model-card-${m}`}
               >
                 <div className="absolute -right-6 -top-6 h-32 w-32 rounded-full bg-zetor-red/10 group-hover:bg-white/10 transition" />
-                <p className="text-zetor-red text-xs uppercase tracking-[0.3em] font-bold group-hover:text-white">Zetor · {MODEL_META[m].series}</p>
-                <h3 className="font-display font-black text-5xl tracking-tighter relative">{m}</h3>
-                <p className="text-sm text-zinc-300 group-hover:text-white relative">{MODEL_META[m].desc}</p>
+                <p className="text-zetor-red text-[10px] sm:text-xs uppercase tracking-[0.3em] font-bold group-hover:text-white">Zetor · {MODEL_META[m].series}</p>
+                <h3 className="font-display font-black text-2xl sm:text-3xl lg:text-4xl tracking-tighter relative leading-none">{m}</h3>
+                <p className="text-xs sm:text-sm text-zinc-300 group-hover:text-white relative">{MODEL_META[m].desc}</p>
                 <div className="mt-2 flex items-center justify-between relative">
-                  <span className="text-[11px] uppercase tracking-widest font-bold border border-white/30 px-2 py-1">{MODEL_META[m].hp}</span>
+                  <span className="text-[10px] sm:text-[11px] uppercase tracking-widest font-bold border border-white/30 px-2 py-1">{MODEL_META[m].hp}</span>
                   <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition" />
                 </div>
               </Link>

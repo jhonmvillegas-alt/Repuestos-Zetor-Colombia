@@ -3,7 +3,7 @@ import { Plus, Pencil, Trash2, X, Upload, Search, Check, ImageIcon } from "lucid
 import api from "../../lib/api";
 
 const SYSTEMS = ["motor", "hidraulico", "transmision", "frenos", "filtros"];
-const MODELS = ["5211", "6211", "7211", "8011"];
+const MODELS = ["5511-5545", "5711-5745", "6711-6745", "6911-6945", "7011-7045", "7211-7245", "8011-12045"];
 
 const emptyForm = {
   sku: "",
@@ -178,7 +178,7 @@ export default function AdminProducts() {
                 <div className="mt-1 flex gap-2 flex-wrap">
                   {MODELS.map((m) => (
                     <button type="button" key={m} onClick={() => toggleCompat(m)} className={`px-3 py-1.5 text-xs font-bold uppercase tracking-widest border rounded-sm ${form.compatibilidad.includes(m) ? "bg-zetor-red text-white border-zetor-red" : "border-zinc-300"}`}>
-                      {form.compatibilidad.includes(m) && <Check className="h-3 w-3 inline mr-1" />}Z{m}
+                      {form.compatibilidad.includes(m) && <Check className="h-3 w-3 inline mr-1" />}{m}
                     </button>
                   ))}
                 </div>

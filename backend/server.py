@@ -34,7 +34,7 @@ SYSTEMS = {
     "frenos": "Frenos",
     "filtros": "Filtros",
 }
-MODELS = ["5211", "6211", "7211", "8011"]
+MODELS = ["5511-5545", "5711-5745", "6711-6745", "6911-6945", "7011-7045", "7211-7245", "8011-12045"]
 
 # ----- DB -----
 mongo_url = os.environ['MONGO_URL']
@@ -453,29 +453,29 @@ async def seed_products():
     if not seed_path.exists():
         return
     raw = json.loads(seed_path.read_text(encoding="utf-8"))
-    # default: products are compatible with all 4 main models unless a number appears in the name
+    # Compatibility heuristic for new model series
+    ALL_SERIES = ["5511-5545", "5711-5745", "6711-6745", "6911-6945", "7011-7045", "7211-7245", "8011-12045"]
     for i, item in enumerate(raw):
         name_lower = item["nombre"].lower()
-        compat = []
-        for m in MODELS:
-            if m in name_lower or m[:2] in name_lower:
-                # only match strict "5211" etc. not partial
-                if m in name_lower:
-                    compat.append(m)
-        # heuristic: if name mentions 6911/7011 these are series, map to 6211/7211
-        if "6911" in name_lower:
-            compat.append("6211")
-        if "7011" in name_lower:
-            compat.append("7211")
+        compat = set()
+        if "6911" in name_lower: compat.add("6911-6945")
+        if "7011" in name_lower: compat.add("7011-7045")
+        if "7211" in name_lower or "7245" in name_lower: compat.add("7211-7245")
+        if "8011" in name_lower: compat.add("8011-12045")
+        if "5511" in name_lower: compat.add("5511-5545")
+        if "5711" in name_lower: compat.add("5711-5745")
+        if "6711" in name_lower: compat.add("6711-6745")
         if "95m" in name_lower or "95 m" in name_lower:
-            compat.extend(["5211", "6211"])
+            compat.update({"5511-5545", "5711-5745"})
         if "102m" in name_lower or "102 m" in name_lower:
-            compat.extend(["6211", "7211"])
-        if "110" in name_lower:
-            compat.extend(["7211", "8011"])
+            compat.update({"6711-6745", "6911-6945"})
+        if "110 turbo" in name_lower:
+            compat.add("8011-12045")
+        elif "110" in name_lower:
+            compat.update({"7011-7045", "7211-7245", "8011-12045"})
         if not compat:
-            compat = ["5211", "6211", "7211", "8011"]
-        compat = sorted(set(compat))
+            compat = set(ALL_SERIES)
+        compat = sorted(compat, key=lambda s: ALL_SERIES.index(s))
 
         # Drive image link → for now use system category fallback
         imagen = None  # we won't use Drive raw URLs (not displayable). Admin can upload later.
