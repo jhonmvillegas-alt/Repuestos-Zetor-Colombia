@@ -379,6 +379,43 @@ async def delete_lead(lead_id: str, user: dict = Depends(get_current_user)):
     await db.leads.delete_one({"id": lead_id})
     return {"ok": True}
 
+# ----- Site Settings (images & content of public site) -----
+DEFAULT_SETTINGS = {
+    "hero_left_image": "https://almacenzetorrepuestos.com/wp-content/uploads/2026/04/Gemini_Generated_Image_n0vlzqn0vlzqn0vl-1-scaled.png",
+    "hero_right_video": "https://almacenzetorrepuestos.com/wp-content/uploads/2026/04/Agent_video_Pippit_20260429224100.mp4",
+    "system_image_motor": "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+    "system_image_hidraulico": "https://images.unsplash.com/photo-1759692071969-c32285cffc40?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+    "system_image_transmision": "https://images.unsplash.com/photo-1667339240140-1aee60bea0e5?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+    "system_image_frenos": "https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+    "system_image_filtros": "https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+    "about_mechanic_image": "https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200",
+    "about_tractor_image": "https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200",
+}
+
+async def get_settings_dict() -> dict:
+    docs = await db.site_settings.find({}, {"_id": 0}).to_list(length=200)
+    settings = {**DEFAULT_SETTINGS}
+    for d in docs:
+        settings[d["key"]] = d["value"]
+    return settings
+
+@api_router.get("/site/settings")
+async def get_site_settings():
+    return await get_settings_dict()
+
+@api_router.put("/admin/site/settings")
+async def update_site_settings(payload: dict, user: dict = Depends(get_current_user)):
+    """Bulk-update site settings. Pass {key: value, ...}."""
+    for key, value in payload.items():
+        if not isinstance(key, str):
+            continue
+        await db.site_settings.update_one(
+            {"key": key},
+            {"$set": {"key": key, "value": value, "updated_at": now_iso()}},
+            upsert=True,
+        )
+    return await get_settings_dict()
+
 # ----- Site config (public) -----
 @api_router.get("/site/config")
 async def site_config():

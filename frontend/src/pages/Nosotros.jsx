@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MapPin, Phone, MessageCircle, Award, Users, Truck } from "lucide-react";
 import { generalWhatsAppMessage, formatWhatsAppDisplay } from "../lib/whatsapp";
+import { useSiteSettings } from "../context/SiteSettingsContext";
 
 export default function Nosotros() {
+  const settings = useSiteSettings();
   return (
     <div className="bg-white">
       <section className="bg-carbon text-white">
@@ -20,7 +22,7 @@ export default function Nosotros() {
         <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="aspect-[4/5] rounded-sm overflow-hidden">
-              <img src="https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200" alt="Tractor Zetor en campo" className="h-full w-full object-cover" />
+              <img src={settings.about_tractor_image} alt="Tractor Zetor en campo" className="h-full w-full object-cover" />
             </div>
           </div>
           <div className="lg:col-span-7">

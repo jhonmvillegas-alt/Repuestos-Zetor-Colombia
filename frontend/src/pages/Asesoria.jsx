@@ -2,8 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MessageCircle, ShieldCheck, ClipboardCheck, Truck, Wrench, Phone } from "lucide-react";
 import { generalWhatsAppMessage, formatWhatsAppDisplay } from "../lib/whatsapp";
+import { useSiteSettings } from "../context/SiteSettingsContext";
 
 export default function Asesoria() {
+  const settings = useSiteSettings();
   return (
     <div className="bg-white">
       <section className="bg-carbon text-white">
@@ -21,7 +23,7 @@ export default function Asesoria() {
             </a>
           </div>
           <div className="aspect-[4/5] rounded-sm overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200" alt="Asesoría técnica Zetor" className="h-full w-full object-cover" />
+            <img src={settings.about_mechanic_image} alt="Asesoría técnica Zetor" className="h-full w-full object-cover" />
           </div>
         </div>
       </section>

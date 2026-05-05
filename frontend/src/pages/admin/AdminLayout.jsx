@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
-import { Box, FileText, Inbox, LogOut, Home, LayoutDashboard } from "lucide-react";
+import { Box, FileText, Inbox, LogOut, Home, LayoutDashboard, Image as ImageIcon } from "lucide-react";
 import { useAuth } from "../../context/AuthContext";
 
 export default function AdminLayout() {
@@ -11,6 +11,7 @@ export default function AdminLayout() {
   const navItems = [
     { to: "/admin", end: true, label: "Dashboard", icon: LayoutDashboard },
     { to: "/admin/productos", label: "Productos", icon: Box },
+    { to: "/admin/configuracion", label: "Imágenes Sitio", icon: ImageIcon },
     { to: "/admin/blog", label: "Blog", icon: FileText },
     { to: "/admin/leads", label: "Leads", icon: Inbox },
   ];

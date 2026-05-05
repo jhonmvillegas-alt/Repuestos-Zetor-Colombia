@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 
 import { AuthProvider } from "@/context/AuthContext";
+import { SiteSettingsProvider } from "@/context/SiteSettingsContext";
 import ProtectedRoute from "@/components/ProtectedRoute";
 import ScrollToTop from "@/components/ScrollToTop";
 import PublicLayout from "@/components/PublicLayout";
@@ -24,6 +25,7 @@ import AdminDashboard from "@/pages/admin/AdminDashboard";
 import AdminProducts from "@/pages/admin/AdminProducts";
 import AdminBlog from "@/pages/admin/AdminBlog";
 import AdminLeads from "@/pages/admin/AdminLeads";
+import AdminSettings from "@/pages/admin/AdminSettings";
 
 function NotFound() {
   return (
@@ -41,6 +43,7 @@ export default function App() {
   return (
     <div className="App">
       <AuthProvider>
+        <SiteSettingsProvider>
         <BrowserRouter>
           <ScrollToTop />
           <Routes>
@@ -70,12 +73,14 @@ export default function App() {
             >
               <Route index element={<AdminDashboard />} />
               <Route path="productos" element={<AdminProducts />} />
+              <Route path="configuracion" element={<AdminSettings />} />
               <Route path="blog" element={<AdminBlog />} />
               <Route path="leads" element={<AdminLeads />} />
             </Route>
           </Routes>
           <Toaster richColors position="top-right" />
         </BrowserRouter>
+        </SiteSettingsProvider>
       </AuthProvider>
     </div>
   );

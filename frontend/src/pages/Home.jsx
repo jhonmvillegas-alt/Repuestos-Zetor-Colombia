@@ -4,13 +4,14 @@ import { ArrowRight, Wrench, Settings, Cog, Disc, Filter, MessageCircle, Phone, 
 import api from "../lib/api";
 import ProductCard from "../components/ProductCard";
 import { generalWhatsAppMessage, modelWhatsAppMessage, formatWhatsAppDisplay } from "../lib/whatsapp";
+import { useSiteSettings } from "../context/SiteSettingsContext";
 
 const SYSTEM_META = {
-  motor: { label: "Motor", icon: Settings, img: "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=800" },
-  hidraulico: { label: "Hidráulico", icon: Wrench, img: "https://images.unsplash.com/photo-1759692071969-c32285cffc40?crop=entropy&cs=srgb&fm=jpg&q=80&w=800" },
-  transmision: { label: "Transmisión", icon: Cog, img: "https://images.unsplash.com/photo-1667339240140-1aee60bea0e5?crop=entropy&cs=srgb&fm=jpg&q=80&w=800" },
-  frenos: { label: "Frenos", icon: Disc, img: "https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&q=80&w=800" },
-  filtros: { label: "Filtros", icon: Filter, img: "https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&q=80&w=800" },
+  motor: { label: "Motor", icon: Settings, key: "system_image_motor" },
+  hidraulico: { label: "Hidráulico", icon: Wrench, key: "system_image_hidraulico" },
+  transmision: { label: "Transmisión", icon: Cog, key: "system_image_transmision" },
+  frenos: { label: "Frenos", icon: Disc, key: "system_image_frenos" },
+  filtros: { label: "Filtros", icon: Filter, key: "system_image_filtros" },
 };
 
 const MODEL_META = {
@@ -24,6 +25,7 @@ const MODEL_META = {
 };
 
 export default function Home() {
+  const settings = useSiteSettings();
   const [featured, setFeatured] = useState([]);
   const [stats, setStats] = useState({ total: 0 });
   const [categories, setCategories] = useState([]);
@@ -34,8 +36,8 @@ export default function Home() {
     api.get("/categories").then((r) => setCategories(r.data || []));
   }, []);
 
-  const HERO_LEFT_IMG = "https://almacenzetorrepuestos.com/wp-content/uploads/2026/04/Gemini_Generated_Image_n0vlzqn0vlzqn0vl-1-scaled.png";
-  const HERO_RIGHT_VIDEO = "https://almacenzetorrepuestos.com/wp-content/uploads/2026/04/Agent_video_Pippit_20260429224100.mp4";
+  const HERO_LEFT_IMG = settings.hero_left_image;
+  const HERO_RIGHT_VIDEO = settings.hero_right_video;
 
   return (
     <div className="bg-white">
@@ -143,6 +145,7 @@ export default function Home() {
               const m = SYSTEM_META[slug];
               const Icon = m.icon;
               const cat = categories.find((c) => c.slug === slug);
+              const img = settings[m.key];
               return (
                 <Link
                   key={slug}
@@ -151,7 +154,7 @@ export default function Home() {
                   data-testid={`system-card-${slug}`}
                 >
                   <div className="aspect-[4/3] relative bg-zinc-100 overflow-hidden">
-                    <img src={m.img} alt={m.label} className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                    <img src={img} alt={m.label} className="h-full w-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
                     <Icon className="absolute top-3 right-3 h-5 w-5 text-white" />
                     <div className="absolute bottom-3 left-3 right-3">
@@ -210,7 +213,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-6 relative">
             <div className="aspect-[4/5] bg-zinc-100 rounded-sm overflow-hidden relative">
-              <img src="https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200" alt="Mecánico especialista Zetor" className="h-full w-full object-cover" />
+              <img src={settings.about_mechanic_image} alt="Mecánico especialista Zetor" className="h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-transparent" />
             </div>
             <div className="absolute -bottom-6 -right-4 sm:bottom-6 sm:-right-6 bg-zetor-red text-white p-5 sm:p-7 rounded-sm max-w-xs shadow-2xl" data-testid="advisory-badge">
