@@ -391,6 +391,201 @@ async def site_config():
         "models": [{"slug": m, "nombre": f"Zetor {m}"} for m in MODELS],
     }
 
+# ----- Bulk Import XLSX -----
+SYSTEM_KEYWORDS = {
+    "filtros": ["filtro"],
+    "hidraulico": ["hidraul", "alce", "deposito", "depósito", "direccion", "dirección"],
+    "frenos": ["freno", "albesto", "balata"],
+    "transmision": ["embrague", "piñon", "piñón", "satelite", "satélite", "porta", "araña",
+                    "funda", "cremallera", "terminal", "disco", "caja", "transmis"],
+    "motor": ["bomba", "anillo", "biela", "valvula", "válvula", "kit motor", "kit ", "radiador",
+              "ventilador", "retenedor", "multiple", "múltiple", "camisa", "empaq", "tablero",
+              "silla", "farola", "pistón", "piston", "motor"],
+}
+
+def infer_system(nombre: str, categoria_original: str | None = None) -> str:
+    text = f"{nombre} {categoria_original or ''}".lower()
+    for sys_slug, keywords in SYSTEM_KEYWORDS.items():
+        for kw in keywords:
+            if kw in text:
+                return sys_slug
+    return "motor"  # default fallback
+
+ALL_SERIES = ["5511-5545", "5711-5745", "6711-6745", "6911-6945", "7011-7045", "7211-7245", "8011-12045"]
+
+def infer_compatibility(nombre: str) -> list:
+    n = (nombre or "").lower()
+    series = set()
+    if "6911" in n: series.add("6911-6945")
+    if "7011" in n: series.add("7011-7045")
+    if "7211" in n or "7245" in n: series.add("7211-7245")
+    if "8011" in n: series.add("8011-12045")
+    if "5511" in n: series.add("5511-5545")
+    if "5711" in n: series.add("5711-5745")
+    if "6711" in n: series.add("6711-6745")
+    if "95m" in n or "95 m" in n:
+        series.update({"5511-5545", "5711-5745"})
+    if "102m" in n or "102 m" in n:
+        series.update({"6711-6745", "6911-6945"})
+    if "110 turbo" in n:
+        series.add("8011-12045")
+    elif "110" in n:
+        series.update({"7011-7045", "7211-7245", "8011-12045"})
+    if not series:
+        series = set(ALL_SERIES)
+    return sorted(series, key=lambda s: ALL_SERIES.index(s))
+
+DRIVE_RE = re.compile(r"/d/([a-zA-Z0-9_-]+)")
+
+def drive_to_embed(url: str | None) -> str | None:
+    if not url:
+        return None
+    m = DRIVE_RE.search(url)
+    if m:
+        return f"https://lh3.googleusercontent.com/d/{m.group(1)}=w1200"
+    if url.startswith("http"):
+        return url
+    return None
+
+@api_router.post("/admin/products/import")
+async def import_products_xlsx(
+    file: UploadFile = File(...),
+    overwrite: bool = Form(False),
+    user: dict = Depends(get_current_user),
+):
+    """
+    Bulk-import / update products from an XLSX file.
+    Expected columns (case insensitive, accents tolerated): sku, nombre, categoria,
+    sistema (optional), descripcion (optional), imagen (optional), compatibilidad (optional).
+    """
+    if not file.filename.lower().endswith((".xlsx", ".xls")):
+        raise HTTPException(status_code=400, detail="Sube un archivo .xlsx")
+    content = await file.read()
+    if len(content) > 10 * 1024 * 1024:
+        raise HTTPException(status_code=400, detail="Archivo mayor a 10MB")
+
+    from io import BytesIO
+    from openpyxl import load_workbook
+
+    try:
+        wb = load_workbook(BytesIO(content), data_only=True, read_only=True)
+        ws = wb.active
+        rows = list(ws.iter_rows(values_only=True))
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"No se pudo leer el archivo: {e}")
+
+    if not rows:
+        raise HTTPException(status_code=400, detail="Archivo vacío")
+
+    # Header row → normalized
+    def norm(s):
+        if s is None:
+            return ""
+        s = str(s).strip().lower()
+        for a, b in [("á", "a"), ("é", "e"), ("í", "i"), ("ó", "o"), ("ú", "u"), ("ñ", "n")]:
+            s = s.replace(a, b)
+        return s
+
+    header = [norm(c) for c in rows[0]]
+    data_rows = rows[1:]
+
+    def col_idx(*names):
+        for n in names:
+            if n in header:
+                return header.index(n)
+        return None
+
+    idx_sku = col_idx("sku", "referencia", "codigo", "código")
+    idx_nombre = col_idx("nombre", "producto", "descripcion del producto", "descripcion")
+    idx_categoria = col_idx("categoria", "categoría", "tipo")
+    idx_sistema = col_idx("sistema")
+    idx_descripcion = col_idx("descripcion", "descripción", "detalle")
+    idx_imagen = col_idx("imagen", "foto", "url imagen", "image url")
+    idx_compat = col_idx("compatibilidad", "modelo", "modelos")
+
+    if idx_sku is None or idx_nombre is None:
+        raise HTTPException(
+            status_code=400,
+            detail="Faltan columnas obligatorias: 'sku' y 'nombre'. Encontradas: " + ", ".join(header),
+        )
+
+    created, updated, skipped, errors = 0, 0, 0, []
+
+    for row_num, row in enumerate(data_rows, start=2):
+        try:
+            sku = str(row[idx_sku]).strip() if row[idx_sku] is not None else ""
+            nombre = str(row[idx_nombre]).strip() if row[idx_nombre] is not None else ""
+            if not sku or not nombre:
+                skipped += 1
+                continue
+
+            categoria = (str(row[idx_categoria]).strip() if idx_categoria is not None and row[idx_categoria] is not None else None)
+            sistema_raw = (str(row[idx_sistema]).strip().lower() if idx_sistema is not None and row[idx_sistema] is not None else None)
+            sistema = sistema_raw if sistema_raw in SYSTEMS else infer_system(nombre, categoria)
+            descripcion = (str(row[idx_descripcion]).strip() if idx_descripcion is not None and row[idx_descripcion] is not None else f"Repuesto Zetor — {nombre}. Referencia {sku}.")
+            imagen_raw = (str(row[idx_imagen]).strip() if idx_imagen is not None and row[idx_imagen] is not None else None)
+            imagen = drive_to_embed(imagen_raw)
+
+            compat = infer_compatibility(nombre)
+            if idx_compat is not None and row[idx_compat] is not None:
+                # Allow comma- or pipe-separated overrides
+                raw = str(row[idx_compat])
+                manual = [c.strip() for c in re.split(r"[,;|]", raw) if c.strip()]
+                if manual:
+                    compat = [c for c in manual if c in ALL_SERIES] or compat
+
+            existing = await db.products.find_one({"sku": sku})
+            doc = {
+                "sku": sku,
+                "nombre": nombre,
+                "sistema": sistema,
+                "categoria_original": categoria,
+                "descripcion": descripcion,
+                "observacion_tecnica": "Antes de despachar validamos compatibilidad con tu modelo y número de chasis.",
+                "compatibilidad": compat,
+                "imagen_principal": imagen or (existing.get("imagen_principal") if existing else None),
+                "galeria": existing.get("galeria", []) if existing else [],
+                "disponibilidad": "Disponible",
+                "destacado": existing.get("destacado", False) if existing else False,
+                "activo": True,
+                "updated_at": now_iso(),
+            }
+            if existing:
+                if not overwrite:
+                    # Update only when overwrite=true; otherwise skip
+                    skipped += 1
+                    continue
+                doc["slug"] = make_slug(nombre, sku)
+                # ensure unique
+                n = 1
+                base = doc["slug"]
+                while await db.products.find_one({"slug": doc["slug"], "id": {"$ne": existing["id"]}}):
+                    n += 1
+                    doc["slug"] = f"{base}-{n}"
+                await db.products.update_one({"id": existing["id"]}, {"$set": doc})
+                updated += 1
+            else:
+                doc["id"] = str(uuid.uuid4())
+                doc["slug"] = make_slug(nombre, sku)
+                n = 1
+                base = doc["slug"]
+                while await db.products.find_one({"slug": doc["slug"]}):
+                    n += 1
+                    doc["slug"] = f"{base}-{n}"
+                doc["created_at"] = now_iso()
+                await db.products.insert_one(doc)
+                created += 1
+        except Exception as e:
+            errors.append({"row": row_num, "error": str(e)})
+
+    return {
+        "created": created,
+        "updated": updated,
+        "skipped": skipped,
+        "errors": errors[:20],
+        "total_rows": len(data_rows),
+    }
+
 # ----- Health -----
 @api_router.get("/")
 async def root():

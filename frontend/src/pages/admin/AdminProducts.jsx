@@ -30,6 +30,11 @@ export default function AdminProducts() {
   const [saving, setSaving] = useState(false);
   const fileRef = useRef(null);
   const galRef = useRef(null);
+  const importRef = useRef(null);
+  const [importOpen, setImportOpen] = useState(false);
+  const [importing, setImporting] = useState(false);
+  const [importResult, setImportResult] = useState(null);
+  const [overwriteImport, setOverwriteImport] = useState(true);
 
   const load = async () => {
     const { data } = await api.get(`/admin/products${q ? `?q=${encodeURIComponent(q)}` : ""}`);
@@ -93,6 +98,24 @@ export default function AdminProducts() {
 
   const toggleCompat = (m) => setForm((f) => ({ ...f, compatibilidad: f.compatibilidad.includes(m) ? f.compatibilidad.filter((x) => x !== m) : [...f.compatibilidad, m] }));
 
+  const runImport = async (file) => {
+    if (!file) return;
+    setImporting(true);
+    setImportResult(null);
+    try {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("overwrite", overwriteImport ? "true" : "false");
+      const { data } = await api.post("/admin/products/import", fd, { headers: { "Content-Type": "multipart/form-data" } });
+      setImportResult(data);
+      await load();
+    } catch (e) {
+      setImportResult({ error: e.response?.data?.detail || e.message });
+    } finally {
+      setImporting(false);
+    }
+  };
+
   return (
     <div>
       <div className="flex items-center justify-between gap-3 flex-wrap mb-5">
@@ -100,9 +123,14 @@ export default function AdminProducts() {
           <h1 className="font-display font-black uppercase text-3xl tracking-tighter">Productos</h1>
           <p className="text-sm text-zinc-600">{items.length} productos</p>
         </div>
-        <button onClick={startNew} className="inline-flex items-center gap-2 bg-zetor-red text-white font-bold uppercase tracking-widest px-4 py-2.5 rounded-sm hover:bg-[#B91820]" data-testid="admin-product-new">
-          <Plus className="h-4 w-4" /> Nuevo producto
-        </button>
+        <div className="flex items-center gap-2 flex-wrap">
+          <button onClick={() => { setImportResult(null); setImportOpen(true); }} className="inline-flex items-center gap-2 bg-carbon text-white font-bold uppercase tracking-widest px-4 py-2.5 rounded-sm hover:bg-zinc-800" data-testid="admin-product-import">
+            <FileSpreadsheet className="h-4 w-4" /> Importar XLSX
+          </button>
+          <button onClick={startNew} className="inline-flex items-center gap-2 bg-zetor-red text-white font-bold uppercase tracking-widest px-4 py-2.5 rounded-sm hover:bg-[#B91820]" data-testid="admin-product-new">
+            <Plus className="h-4 w-4" /> Nuevo producto
+          </button>
+        </div>
       </div>
 
       <div className="bg-white border border-zinc-200 rounded-sm p-4 mb-4 flex items-center gap-2">
@@ -244,6 +272,85 @@ export default function AdminProducts() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* Import XLSX modal */}
+      {importOpen && (
+        <div className="fixed inset-0 z-50 bg-black/60 grid place-items-center p-4 overflow-y-auto" onClick={() => !importing && setImportOpen(false)}>
+          <div className="bg-white rounded-sm w-full max-w-lg" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b border-zinc-200">
+              <h2 className="font-display font-black uppercase text-xl tracking-tight flex items-center gap-2">
+                <FileSpreadsheet className="h-5 w-5 text-zetor-red" /> Importar productos XLSX
+              </h2>
+              <button onClick={() => !importing && setImportOpen(false)} disabled={importing}><X className="h-5 w-5" /></button>
+            </div>
+            <div className="p-5 space-y-4">
+              <div className="bg-zinc-50 border-l-4 border-zetor-red p-4 rounded-sm text-sm space-y-1.5">
+                <p className="font-bold uppercase tracking-widest text-xs text-carbon">Formato esperado del Excel</p>
+                <p className="text-zinc-700">Columnas obligatorias: <code className="bg-zinc-200 px-1">sku</code>, <code className="bg-zinc-200 px-1">nombre</code>.</p>
+                <p className="text-zinc-700">Columnas opcionales: <code className="bg-zinc-200 px-1">categoria</code>, <code className="bg-zinc-200 px-1">sistema</code>, <code className="bg-zinc-200 px-1">descripcion</code>, <code className="bg-zinc-200 px-1">imagen</code>, <code className="bg-zinc-200 px-1">compatibilidad</code>.</p>
+                <p className="text-zinc-600 text-xs mt-2">Si no especificas el sistema, lo deduzco del nombre. Si no especificas modelos, los aplico a todas las series.</p>
+              </div>
+
+              <label className="inline-flex items-center gap-2 text-sm">
+                <input type="checkbox" checked={overwriteImport} onChange={(e) => setOverwriteImport(e.target.checked)} />
+                Sobrescribir productos existentes (mismo SKU)
+              </label>
+
+              {!importResult && (
+                <div className="border-2 border-dashed border-zinc-300 rounded-sm p-8 text-center">
+                  <input ref={importRef} type="file" accept=".xlsx,.xls" onChange={(e) => runImport(e.target.files?.[0])} className="hidden" />
+                  <FileSpreadsheet className="h-10 w-10 text-zinc-400 mx-auto" />
+                  <p className="mt-3 text-sm text-zinc-600">Selecciona tu archivo Excel</p>
+                  <button onClick={() => importRef.current?.click()} disabled={importing} className="mt-4 inline-flex items-center gap-2 bg-zetor-red text-white font-bold uppercase tracking-widest px-5 py-2.5 rounded-sm hover:bg-[#B91820] disabled:opacity-60">
+                    <Upload className="h-4 w-4" /> {importing ? "Procesando..." : "Subir archivo"}
+                  </button>
+                </div>
+              )}
+
+              {importResult && (
+                <div className="space-y-3">
+                  {importResult.error ? (
+                    <div className="bg-red-50 border border-red-200 text-red-800 p-4 rounded-sm flex items-start gap-3">
+                      <AlertCircle className="h-5 w-5 mt-0.5" />
+                      <div>
+                        <p className="font-bold uppercase tracking-widest text-xs">Error en la importación</p>
+                        <p className="text-sm mt-1">{String(importResult.error)}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="bg-emerald-50 border border-emerald-200 text-emerald-900 p-4 rounded-sm flex items-start gap-3">
+                      <CheckCircle2 className="h-5 w-5 mt-0.5" />
+                      <div>
+                        <p className="font-bold uppercase tracking-widest text-xs">Importación completa</p>
+                        <ul className="text-sm mt-1 space-y-0.5">
+                          <li>Creados: <strong>{importResult.created}</strong></li>
+                          <li>Actualizados: <strong>{importResult.updated}</strong></li>
+                          <li>Omitidos: <strong>{importResult.skipped}</strong></li>
+                          <li>Filas totales: <strong>{importResult.total_rows}</strong></li>
+                        </ul>
+                        {importResult.errors?.length > 0 && (
+                          <details className="mt-2 text-xs">
+                            <summary className="cursor-pointer font-bold">Errores ({importResult.errors.length})</summary>
+                            <ul className="mt-1 space-y-1 max-h-40 overflow-y-auto">
+                              {importResult.errors.map((er, i) => (
+                                <li key={i}>Fila {er.row}: {er.error}</li>
+                              ))}
+                            </ul>
+                          </details>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                  <div className="flex justify-end gap-3">
+                    <button onClick={() => { setImportResult(null); }} className="text-sm font-bold uppercase tracking-widest text-zinc-600">Importar otro</button>
+                    <button onClick={() => setImportOpen(false)} className="bg-carbon text-white font-bold uppercase tracking-widest px-5 py-2.5 rounded-sm">Cerrar</button>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}
