@@ -22,6 +22,18 @@ export default function Nosotros() {
         <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-12 gap-10">
           <div className="lg:col-span-5">
             <div className="aspect-[4/5] rounded-sm overflow-hidden">
+  {settings.about_tractor_image?.includes('vimeo.com') ? (
+    <iframe
+      src={`https://player.vimeo.com/video/${settings.about_tractor_image.split('/').filter(Boolean).pop().split('?')[0]}?autoplay=1&loop=1&muted=1&background=1`}
+      className="h-full w-full"
+      style={{border:'none'}}
+      allow="autoplay; fullscreen"
+      allowFullScreen
+    />
+  ) : (
+    <img src={settings.about_tractor_image} alt="Tractor Zetor en campo" className="h-full w-full object-cover" />
+  )}
+</div>
               <img src={settings.about_tractor_image?.includes('vimeo.com') ? (
   <iframe
     src={`https://player.vimeo.com/video/${settings.about_tractor_image.split('/').filter(Boolean).pop().split('?')[0]}?autoplay=1&loop=1&muted=1&background=1`}
