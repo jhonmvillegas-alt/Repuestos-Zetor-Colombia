@@ -62,7 +62,7 @@ export default function AdminProducts() {
       const fd = new FormData();
       fd.append("file", file);
       const { data } = await api.post("/admin/upload", fd, { headers: { "Content-Type": "multipart/form-data" } });
-      const fullUrl = const fullUrl = data.url.startsWith("http") ? data.url : `${process.env.REACT_APP_BACKEND_URL}${data.url}`;
+      const fullUrl = data.url.startsWith("http") ? data.url : `${process.env.REACT_APP_BACKEND_URL}${data.url}`;
       if (target === "imagen_principal") setForm((f) => ({ ...f, imagen_principal: fullUrl }));
       else setForm((f) => ({ ...f, galeria: [...(f.galeria || []), fullUrl] }));
     } catch (e) {
