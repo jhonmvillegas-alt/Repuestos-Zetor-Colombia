@@ -14,6 +14,15 @@ from typing import List, Optional
 
 import bcrypt
 import jwt
+import cloudinary
+import cloudinary.uploader
+
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+    secure=True,
+)
 from slugify import slugify
 from fastapi import FastAPI, APIRouter, Request, Response, HTTPException, Depends, UploadFile, File, Form, Query
 from fastapi.staticfiles import StaticFiles
@@ -293,15 +302,7 @@ async def admin_list_products(user: dict = Depends(get_current_user), q: Optiona
     return {"items": items, "total": len(items)}
 
 # ----- Image Upload -----
-import cloudinary
-import cloudinary.uploader
-
-cloudinary.config(
-    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
-    api_key=os.environ.get("CLOUDINARY_API_KEY"),
-    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
-    secure=True,
-)
+upload_image
 
 @api_router.post("/admin/upload")
 async def upload_image(file: UploadFile = File(...), user: dict = Depends(get_current_user)):
