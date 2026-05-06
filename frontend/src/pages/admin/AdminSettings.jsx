@@ -58,7 +58,7 @@ export default function AdminSettings() {
     fd.append("file", file);
     try {
       const { data } = await api.post("/admin/upload", fd, { headers: { "Content-Type": "multipart/form-data" } });
-      const fullUrl = `${process.env.REACT_APP_BACKEND_URL}${data.url}`;
+      const fullUrl = data.url.startsWith("http") ? data.url : `${process.env.REACT_APP_BACKEND_URL}${data.url}`;
       setVal(key, fullUrl);
     } catch (e) {
       alert("Error al subir el archivo");
