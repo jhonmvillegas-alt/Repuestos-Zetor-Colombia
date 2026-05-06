@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Plus, Pencil, Trash2, X, Upload, Search, Check, ImageIcon } from "lucide-react";
+import { Plus, Pencil, Trash2, X, Upload, Search, Check, ImageIcon, FileSpreadsheet, AlertCircle, CheckCircle2 } from "lucide-react";
 import api from "../../lib/api";
 
 const SYSTEMS = ["motor", "hidraulico", "transmision", "frenos", "filtros"];
