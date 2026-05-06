@@ -293,19 +293,34 @@ async def admin_list_products(user: dict = Depends(get_current_user), q: Optiona
     return {"items": items, "total": len(items)}
 
 # ----- Image Upload -----
+import cloudinary
+import cloudinary.uploader
+
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+    secure=True,
+)
+
 @api_router.post("/admin/upload")
 async def upload_image(file: UploadFile = File(...), user: dict = Depends(get_current_user)):
     allowed = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
     ext = Path(file.filename).suffix.lower()
     if ext not in allowed:
         raise HTTPException(status_code=400, detail="Formato no permitido")
-    fname = f"{uuid.uuid4().hex}{ext}"
-    fpath = UPLOAD_DIR / fname
     content = await file.read()
     if len(content) > 10 * 1024 * 1024:
         raise HTTPException(status_code=400, detail="Archivo mayor a 10MB")
-    fpath.write_bytes(content)
-    return {"url": f"/api/uploads/{fname}", "filename": fname}
+    try:
+        result = cloudinary.uploader.upload(
+            content,
+            folder="zetor/productos",
+            resource_type="image",
+        )
+        return {"url": result["secure_url"], "filename": result["public_id"]}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error subiendo imagen: {str(e)}")
 
 # ----- Blog Endpoints -----
 @api_router.get("/blog/posts")
