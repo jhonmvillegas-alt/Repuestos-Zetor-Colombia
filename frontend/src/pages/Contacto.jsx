@@ -30,6 +30,15 @@ export default function Contacto() {
     }
   };
 
+  const handleWhatsApp = () => {
+    api.post("/contact", {
+      nombre: "WhatsApp",
+      telefono: "desconocido",
+      mensaje: "Click en WhatsApp desde Contacto",
+      tipo: "whatsapp",
+    }).catch(() => {});
+  };
+
   return (
     <div className="bg-white">
       <section className="bg-carbon text-white">
@@ -51,16 +60,12 @@ export default function Contacto() {
                 <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-zetor-red" /> <a href="mailto:zetorrepuestos@gmail.com" className="hover:text-zetor-red">zetorrepuestos@gmail.com</a></li>
                 <li className="flex items-start gap-3"><Clock className="h-4 w-4 text-zetor-red mt-0.5" /> Lun – Vie 8:00–17:30 · Sáb 8:00–13:00</li>
               </ul>
-              <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 bg-whatsapp text-white font-bold uppercase tracking-widest px-5 py-3 rounded-sm hover:bg-[#1EBE5A]" data-testid="contacto-whatsapp-cta"><MessageCircle className="h-4 w-4" /> Escribir a WhatsApp</a>
+              <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" onClick={handleWhatsApp} className="mt-5 inline-flex items-center gap-2 bg-whatsapp text-white font-bold uppercase tracking-widest px-5 py-3 rounded-sm hover:bg-[#1EBE5A]" data-testid="contacto-whatsapp-cta">
+                <MessageCircle className="h-4 w-4" /> Escribir a WhatsApp
+              </a>
             </div>
             <div className="aspect-[4/3] rounded-sm overflow-hidden border border-zinc-200">
-              <iframe
-                title="Ubicación Almacén Zetor"
-                src="https://www.google.com/maps?q=Calle%2019B%2035-2%20Bogot%C3%A1&output=embed"
-                className="h-full w-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+              <iframe title="Ubicación Almacén Zetor" src="https://www.google.com/maps?q=Calle%2019B%2035-2%20Bogot%C3%A1&output=embed" className="h-full w-full" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
             </div>
           </div>
 
