@@ -1,6 +1,7 @@
 import React from "react";
 import { MessageCircle } from "lucide-react";
 import { generalWhatsAppMessage } from "../lib/whatsapp";
+import api from "../lib/api";
 
 export default function FloatingWhatsApp() {
   const handleClick = () => {
@@ -10,6 +11,12 @@ export default function FloatingWhatsApp() {
         event_label: 'floating_button',
       });
     }
+    api.post("/contact", {
+      nombre: "WhatsApp",
+      telefono: "desconocido",
+      mensaje: "Click en botón flotante de WhatsApp",
+      tipo: "whatsapp",
+    }).catch(() => {});
   };
 
   return (
