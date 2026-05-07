@@ -7,6 +7,7 @@ import { generalWhatsAppMessage } from "../lib/whatsapp";
 export default function BlogPost() {
   const { slug } = useParams();
   const [p, setP] = useState(null);
+
   useEffect(() => {
     setP(null);
     api.get(`/blog/posts/${slug}`).then((r) => {
@@ -14,6 +15,7 @@ export default function BlogPost() {
       api.post(`/blog/posts/${slug}/view`).catch(() => {});
     }).catch(() => setP(false));
   }, [slug]);
+
   if (p === null) return <div className="min-h-[60vh] grid place-items-center">Cargando...</div>;
   if (p === false) return (
     <div className="min-h-[60vh] grid place-items-center">
@@ -23,7 +25,18 @@ export default function BlogPost() {
       </div>
     </div>
   );
+
   const fmt = (iso) => new Date(iso).toLocaleDateString("es-CO", { day: "2-digit", month: "long", year: "numeric" });
+
+  const handleWhatsApp = () => {
+    api.post("/contact", {
+      nombre: "WhatsApp",
+      telefono: "desconocido",
+      mensaje: `Click en WhatsApp desde Blog: ${p.titulo}`,
+      tipo: "whatsapp",
+    }).catch(() => {});
+  };
+
   return (
     <article className="bg-white">
       {p.imagen && (
@@ -41,11 +54,10 @@ export default function BlogPost() {
         </div>
         <p className="mt-8 text-lg text-zinc-700 leading-relaxed font-medium">{p.resumen}</p>
         <div className="mt-6 prose prose-zinc max-w-none whitespace-pre-line text-base leading-relaxed text-zinc-800">{p.contenido}</div>
-
         <div className="mt-12 bg-zinc-50 border-l-4 border-zetor-red p-6 rounded-sm">
           <h3 className="font-display font-black uppercase text-xl tracking-tight">¿Necesitas asesoría?</h3>
           <p className="mt-1 text-sm text-zinc-600">Habla con nuestro equipo técnico. Validamos compatibilidad antes de cotizar.</p>
-          <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 bg-whatsapp text-white font-bold uppercase tracking-widest px-5 py-3 rounded-sm hover:bg-[#1EBE5A]" data-testid="blog-whatsapp-cta"><MessageCircle className="h-4 w-4" /> Cotizar por WhatsApp</a>
+          <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" onClick={handleWhatsApp} className="mt-4 inline-flex items-center gap-2 bg-whatsapp text-white font-bold uppercase tracking-widest px-5 py-3 rounded-sm hover:bg-[#1EBE5A]" data-testid="blog-whatsapp-cta"><MessageCircle className="h-4 w-4" /> Cotizar por WhatsApp</a>
         </div>
       </div>
     </article>
