@@ -45,11 +45,7 @@ export default function Header() {
               <span className="hidden sm:inline">Importador Oficial Zetor · </span>Envío a todo Colombia
             </span>
           </div>
-          
-            href="tel:+573202453457"
-            className="flex items-center gap-1.5 font-bold hover:underline whitespace-nowrap shrink-0"
-            data-testid="top-phone-link"
-          >
+          <a href="tel:+573202453457" className="flex items-center gap-1.5 font-bold hover:underline whitespace-nowrap shrink-0" data-testid="top-phone-link">
             <Phone className="h-3.5 w-3.5" />
             <span>+57 320 245 3457</span>
           </a>
@@ -61,30 +57,14 @@ export default function Header() {
           <Link to="/" className="flex items-center gap-3 shrink-0" data-testid="logo-link">
             <img src="/zetor-logo.png" alt="Zetor" className="h-11 w-11 sm:h-12 sm:w-12 object-contain bg-white rounded-full p-0.5" />
             <div className="leading-tight">
-              <div className="font-display font-black tracking-tight text-sm sm:text-base uppercase whitespace-nowrap">
-                Almacén Zetor Repuestos
-              </div>
-              <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-zetor-red font-bold">
-                Importador Oficial · Colombia
-              </div>
+              <div className="font-display font-black tracking-tight text-sm sm:text-base uppercase whitespace-nowrap">Almacén Zetor Repuestos</div>
+              <div className="text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-zetor-red font-bold">Importador Oficial · Colombia</div>
             </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" data-testid="desktop-nav">
             {navItems.map((item) => (
-              <NavLink
-                key={item.to}
-                to={item.to}
-                end={item.to === "/"}
-                className={({ isActive }) =>
-                  `px-3 py-2 text-[13px] font-semibold uppercase tracking-wider transition-colors border-b-2 ${
-                    isActive
-                      ? "text-white border-zetor-red"
-                      : "text-zinc-300 border-transparent hover:text-white hover:border-zinc-600"
-                  }`
-                }
-                data-testid={`nav-${item.label.toLowerCase().replace(/\s|\./g, "-")}`}
-              >
+              <NavLink key={item.to} to={item.to} end={item.to === "/"} className={({ isActive }) => `px-3 py-2 text-[13px] font-semibold uppercase tracking-wider transition-colors border-b-2 ${isActive ? "text-white border-zetor-red" : "text-zinc-300 border-transparent hover:text-white hover:border-zinc-600"}`} data-testid={`nav-${item.label.toLowerCase().replace(/\s|\./g, "-")}`}>
                 {item.label}
               </NavLink>
             ))}
@@ -93,32 +73,13 @@ export default function Header() {
           <div className="flex items-center gap-2">
             <form onSubmit={onSearch} className="hidden md:flex items-center bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-sm">
               <Search className="h-4 w-4 text-zinc-400" />
-              <input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                type="text"
-                placeholder="Buscar SKU o repuesto..."
-                className="bg-transparent outline-none text-sm text-white placeholder:text-zinc-500 w-44 ml-2"
-                data-testid="header-search-input"
-              />
+              <input value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Buscar SKU o repuesto..." className="bg-transparent outline-none text-sm text-white placeholder:text-zinc-500 w-44 ml-2" data-testid="header-search-input" />
             </form>
-            
-              href={generalWhatsAppMessage()}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackWhatsApp('header_desktop')}
-              className="hidden sm:inline-flex items-center gap-2 bg-whatsapp text-white px-3.5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-sm hover:bg-[#1EBE5A] transition"
-              data-testid="header-whatsapp-cta"
-            >
+            <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsApp('header_desktop')} className="hidden sm:inline-flex items-center gap-2 bg-whatsapp text-white px-3.5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-sm hover:bg-[#1EBE5A] transition" data-testid="header-whatsapp-cta">
               <MessageCircle className="h-4 w-4" />
               Cotizar
             </a>
-            <button
-              className="lg:hidden p-2 rounded-sm hover:bg-zinc-800"
-              onClick={() => setOpen(!open)}
-              aria-label="Toggle menu"
-              data-testid="mobile-menu-toggle"
-            >
+            <button className="lg:hidden p-2 rounded-sm hover:bg-zinc-800" onClick={() => setOpen(!open)} aria-label="Toggle menu" data-testid="mobile-menu-toggle">
               {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
@@ -128,29 +89,11 @@ export default function Header() {
           <div className="lg:hidden border-t border-zinc-800 bg-carbon" data-testid="mobile-menu">
             <form onSubmit={onSearch} className="md:hidden flex items-center mx-4 mt-4 bg-zinc-900 border border-zinc-700 px-3 py-2 rounded-sm">
               <Search className="h-4 w-4 text-zinc-400" />
-              <input
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                type="text"
-                placeholder="Buscar..."
-                className="bg-transparent outline-none text-sm text-white placeholder:text-zinc-500 w-full ml-2"
-                data-testid="mobile-search-input"
-              />
+              <input value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Buscar..." className="bg-transparent outline-none text-sm text-white placeholder:text-zinc-500 w-full ml-2" data-testid="mobile-search-input" />
             </form>
             <nav className="flex flex-col py-2">
               {navItems.map((item) => (
-                <NavLink
-                  key={item.to}
-                  to={item.to}
-                  end={item.to === "/"}
-                  onClick={() => setOpen(false)}
-                  className={({ isActive }) =>
-                    `px-5 py-3 text-sm font-semibold uppercase tracking-wider border-l-4 ${
-                      isActive ? "border-zetor-red text-white bg-zinc-900" : "border-transparent text-zinc-300"
-                    }`
-                  }
-                  data-testid={`mobile-nav-${item.label.toLowerCase().replace(/\s|\./g, "-")}`}
-                >
+                <NavLink key={item.to} to={item.to} end={item.to === "/"} onClick={() => setOpen(false)} className={({ isActive }) => `px-5 py-3 text-sm font-semibold uppercase tracking-wider border-l-4 ${isActive ? "border-zetor-red text-white bg-zinc-900" : "border-transparent text-zinc-300"}`} data-testid={`mobile-nav-${item.label.toLowerCase().replace(/\s|\./g, "-")}`}>
                   {item.label}
                 </NavLink>
               ))}
