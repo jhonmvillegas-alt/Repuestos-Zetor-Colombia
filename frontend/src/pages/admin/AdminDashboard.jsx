@@ -74,7 +74,7 @@ export default function AdminDashboard() {
 
         <div className="bg-white border border-zinc-200 rounded-sm p-5">
           <h2 className="font-display font-black uppercase text-xl tracking-tight flex items-center gap-2">
-            <Eye className="h-5 w-5 text-zetor-red" /> Artículos más visitados
+            <Eye className="h-5 w-5 text-zetor-red" /> Productos más visitados
           </h2>
           {topPosts.length === 0 ? (
             <p className="mt-3 text-sm text-zinc-500">Sin visitas aún.</p>
