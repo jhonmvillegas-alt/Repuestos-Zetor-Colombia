@@ -19,7 +19,7 @@ export default function Contacto() {
     }
     setSending(true);
     try {
-      const payload = { ...form, email: form.email || null };
+      const payload = { ...form, email: form.email || null, tipo: "formulario" };
       await api.post("/contact", payload);
       setDone(true);
       setForm({ nombre: "", telefono: "", email: "", ciudad: "", modelo_tractor: "", mensaje: "" });
