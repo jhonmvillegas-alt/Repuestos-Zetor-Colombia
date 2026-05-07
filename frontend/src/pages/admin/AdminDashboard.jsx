@@ -8,7 +8,7 @@ export default function AdminDashboard() {
 
   useEffect(() => {
     Promise.all([
-      api.get("/admin/products?limit=1").then((r) => r.data.total).catch(() => 0),
+      api.get("/admin/products?limit=800").then((r) => r.data.total).catch(() => 0),
       api.get("/admin/leads").then((r) => r.data.items?.length || 0).catch(() => 0),
       api.get("/admin/blog").then((r) => r.data.items?.length || 0).catch(() => 0),
       api.get("/categories").then((r) => r.data.length).catch(() => 0),
