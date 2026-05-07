@@ -122,10 +122,12 @@ export default function ProductoDetalle() {
 
           <a
             href={productWhatsAppMessage(p, { modelo, ciudad })}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 w-full inline-flex items-center justify-center gap-2 bg-whatsapp text-white font-bold uppercase tracking-widest px-6 py-4 rounded-sm hover:bg-[#1EBE5A]"
-            data-testid="product-whatsapp-cta"
+    target="_blank"
+    rel="noopener noreferrer"
+    onClick={() => api.post("/contact", { nombre: "WhatsApp", telefono: "desconocido", mensaje: `Click en producto: ${p.nombre}`, tipo: "whatsapp" }).catch(() => {})}
+    className="mt-3 w-full inline-flex items-center justify-center gap-2 bg-whatsapp text-white font-bold uppercase tracking-widest px-6 py-4 rounded-sm hover:bg-[#1EBE5A]"
+    data-testid="product-whatsapp-cta"
+>
           >
             <MessageCircle className="h-5 w-5" /> Cotizar por WhatsApp
           </a>
