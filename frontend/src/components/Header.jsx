@@ -12,6 +12,15 @@ const navItems = [
   { to: "/contacto", label: "Contacto" },
 ];
 
+const trackWhatsApp = (label) => {
+  if (window.gtag) {
+    window.gtag('event', 'whatsapp_click', {
+      event_category: 'lead',
+      event_label: label,
+    });
+  }
+};
+
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState("");
@@ -28,7 +37,6 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-40">
-      {/* Top red announcement bar */}
       <div className="bg-zetor-red text-white text-xs sm:text-[13px]" data-testid="top-announcement-bar">
         <div className="mx-auto max-w-7xl px-3 sm:px-4 py-2 flex items-center justify-between gap-2 sm:gap-3">
           <div className="flex items-center gap-2 font-medium min-w-0">
@@ -37,7 +45,7 @@ export default function Header() {
               <span className="hidden sm:inline">Importador Oficial Zetor · </span>Envío a todo Colombia
             </span>
           </div>
-          <a
+          
             href="tel:+573202453457"
             className="flex items-center gap-1.5 font-bold hover:underline whitespace-nowrap shrink-0"
             data-testid="top-phone-link"
@@ -48,7 +56,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main dark navbar */}
       <div className="bg-carbon text-white border-b border-zinc-800">
         <div className="mx-auto max-w-7xl px-4 h-16 sm:h-20 flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3 shrink-0" data-testid="logo-link">
@@ -63,7 +70,6 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Desktop nav */}
           <nav className="hidden lg:flex items-center gap-1" data-testid="desktop-nav">
             {navItems.map((item) => (
               <NavLink
@@ -84,7 +90,6 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Search + WhatsApp + mobile toggle */}
           <div className="flex items-center gap-2">
             <form onSubmit={onSearch} className="hidden md:flex items-center bg-zinc-900 border border-zinc-700 px-3 py-1.5 rounded-sm">
               <Search className="h-4 w-4 text-zinc-400" />
@@ -97,10 +102,11 @@ export default function Header() {
                 data-testid="header-search-input"
               />
             </form>
-            <a
+            
               href={generalWhatsAppMessage()}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsApp('header_desktop')}
               className="hidden sm:inline-flex items-center gap-2 bg-whatsapp text-white px-3.5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-sm hover:bg-[#1EBE5A] transition"
               data-testid="header-whatsapp-cta"
             >
@@ -118,7 +124,6 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {open && (
           <div className="lg:hidden border-t border-zinc-800 bg-carbon" data-testid="mobile-menu">
             <form onSubmit={onSearch} className="md:hidden flex items-center mx-4 mt-4 bg-zinc-900 border border-zinc-700 px-3 py-2 rounded-sm">
