@@ -9,7 +9,10 @@ export default function BlogPost() {
   const [p, setP] = useState(null);
   useEffect(() => {
     setP(null);
-    api.get(`/blog/posts/${slug}`).then((r) => setP(r.data)).catch(() => setP(false));
+    api.get(`/blog/posts/${slug}`).then((r) => {
+      setP(r.data);
+      api.post(`/blog/posts/${slug}/view`).catch(() => {});
+    }).catch(() => setP(false));
   }, [slug]);
   if (p === null) return <div className="min-h-[60vh] grid place-items-center">Cargando...</div>;
   if (p === false) return (
