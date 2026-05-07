@@ -228,7 +228,14 @@ async def list_products(
     cursor = db.products.find(query, {"_id": 0}).sort("destacado", -1).skip(skip).limit(limit)
     items = await cursor.to_list(length=limit)
     return {"items": items, "total": total, "page": page, "limit": limit}
-
+@api_router.post("/products/{slug}/view")
+async def register_product_view(slug: str):
+    await db.products.update_one(
+        {"slug": slug},
+        {"$inc": {"views": 1}}
+    )
+    return {"ok": True}
+    
 @api_router.get("/products/{slug}")
 async def get_product(slug: str):
     p = await db.products.find_one({"slug": slug, "activo": True}, {"_id": 0})
