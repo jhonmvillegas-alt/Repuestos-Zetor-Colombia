@@ -84,7 +84,7 @@ export default function AdminDashboard() {
                 <li key={post.id} className="py-3 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
                     <span className="font-display font-black text-2xl text-zinc-200 w-6">{i + 1}</span>
-                    <p className="font-bold text-sm">{post.titulo}</p>
+                    <p className="font-bold text-sm">{post.nombre}</p>
                   </div>
                   <span className="text-xs font-bold text-zinc-500 whitespace-nowrap">
                     {post.views || 0} visitas
