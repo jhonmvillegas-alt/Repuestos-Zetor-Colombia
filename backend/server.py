@@ -160,6 +160,7 @@ class ContactRequest(BaseModel):
     ciudad: Optional[str] = None
     modelo_tractor: Optional[str] = None
     mensaje: str
+    tipo: Optional[str] = "formulario"
 
 # ----- Auth Endpoints -----
 @api_router.post("/auth/login")
