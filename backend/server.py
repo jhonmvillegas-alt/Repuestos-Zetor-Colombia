@@ -654,7 +654,14 @@ async def import_products_xlsx(
         "errors": errors[:20],
         "total_rows": len(data_rows),
     }
-
+@api_router.post("/blog/posts/{slug}/view")
+async def register_view(slug: str):
+    await db.blog_posts.update_one(
+        {"slug": slug},
+        {"$inc": {"views": 1}}
+    )
+    return {"ok": True}
+    
 # ----- Health -----
 @api_router.get("/")
 async def root():
