@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Menu, X, Phone, MapPin, MessageCircle, Search } from "lucide-react";
 import { formatWhatsAppDisplay, generalWhatsAppMessage } from "../lib/whatsapp";
+import api from "../lib/api";
 
 const navItems = [
   { to: "/", label: "Inicio" },
@@ -12,13 +13,19 @@ const navItems = [
   { to: "/contacto", label: "Contacto" },
 ];
 
-const trackWhatsApp = (label) => {
+const handleWhatsApp = (label) => {
   if (window.gtag) {
     window.gtag('event', 'whatsapp_click', {
       event_category: 'lead',
       event_label: label,
     });
   }
+  api.post("/contact", {
+    nombre: "WhatsApp",
+    telefono: "desconocido",
+    mensaje: `Click en WhatsApp desde Header - ${label}`,
+    tipo: "whatsapp",
+  }).catch(() => {});
 };
 
 export default function Header() {
@@ -75,7 +82,7 @@ export default function Header() {
               <Search className="h-4 w-4 text-zinc-400" />
               <input value={search} onChange={(e) => setSearch(e.target.value)} type="text" placeholder="Buscar SKU o repuesto..." className="bg-transparent outline-none text-sm text-white placeholder:text-zinc-500 w-44 ml-2" data-testid="header-search-input" />
             </form>
-            <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" onClick={() => trackWhatsApp('header_desktop')} className="hidden sm:inline-flex items-center gap-2 bg-whatsapp text-white px-3.5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-sm hover:bg-[#1EBE5A] transition" data-testid="header-whatsapp-cta">
+            <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" onClick={() => handleWhatsApp('header_desktop')} className="hidden sm:inline-flex items-center gap-2 bg-whatsapp text-white px-3.5 py-2 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-sm hover:bg-[#1EBE5A] transition" data-testid="header-whatsapp-cta">
               <MessageCircle className="h-4 w-4" />
               Cotizar
             </a>
