@@ -3,9 +3,20 @@ import { Link } from "react-router-dom";
 import { MapPin, Phone, MessageCircle, Award, Users, Truck } from "lucide-react";
 import { generalWhatsAppMessage, formatWhatsAppDisplay } from "../lib/whatsapp";
 import { useSiteSettings } from "../context/SiteSettingsContext";
+import api from "../lib/api";
 
 export default function Nosotros() {
   const settings = useSiteSettings();
+
+  const handleWhatsApp = () => {
+    api.post("/contact", {
+      nombre: "WhatsApp",
+      telefono: "desconocido",
+      mensaje: "Click en WhatsApp desde Nosotros",
+      tipo: "whatsapp",
+    }).catch(() => {});
+  };
+
   return (
     <div className="bg-white">
       <section className="bg-carbon text-white">
@@ -79,23 +90,4 @@ export default function Nosotros() {
       </section>
 
       <section className="py-20 bg-zetor-red text-white">
-        <div className="mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-10 items-center">
-          <div>
-            <h2 className="font-display font-black uppercase text-4xl sm:text-5xl tracking-tighter">Visítanos en Bogotá</h2>
-            <p className="mt-4 text-white/90 max-w-xl">
-              Ven a conocer nuestro almacén o llámanos. Atendemos consultas técnicas y despachamos a todo el país.
-            </p>
-            <div className="mt-6 space-y-2 text-sm">
-              <p className="flex items-center gap-2"><MapPin className="h-4 w-4" /> Calle 19B 35-2, Bogotá, Colombia</p>
-              <p className="flex items-center gap-2"><Phone className="h-4 w-4" /> {formatWhatsAppDisplay()}</p>
-            </div>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 lg:justify-end">
-            <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 bg-whatsapp text-white font-bold uppercase tracking-widest px-6 py-4 rounded-sm hover:bg-[#1EBE5A]"><MessageCircle className="h-5 w-5" /> Cotizar</a>
-            <Link to="/contacto" className="inline-flex items-center justify-center gap-2 bg-carbon text-white font-bold uppercase tracking-widest px-6 py-4 rounded-sm">Ir a Contacto</Link>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-}
+        <div className="mx-auto max-
