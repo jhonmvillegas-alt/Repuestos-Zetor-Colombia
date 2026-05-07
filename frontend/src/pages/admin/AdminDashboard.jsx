@@ -17,7 +17,7 @@ export default function AdminDashboard() {
 
     api.get("/admin/leads").then((r) => setRecent((r.data.items || []).slice(0, 5))).catch(() => setRecent([]));
 
-    api.get("/admin/blog").then((r) => {
+    api.get("/admin/products?limit=200").then((r) => {
       const sorted = (r.data.items || [])
         .sort((a, b) => (b.views || 0) - (a.views || 0))
         .slice(0, 5);
