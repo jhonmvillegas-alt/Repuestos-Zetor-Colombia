@@ -20,6 +20,7 @@ export default function ProductoDetalle() {
     api.get(`/products/${slug}`).then((r) => {
       setP(r.data);
       setActiveImg(r.data.imagen_principal);
+      api.post(`/products/${slug}/view`).catch(() => {});
       api.get(`/products?sistema=${r.data.sistema}&limit=8`).then((r2) => {
         setRelated((r2.data.items || []).filter((x) => x.id !== r.data.id).slice(0, 4));
       });
