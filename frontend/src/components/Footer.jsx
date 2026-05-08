@@ -19,13 +19,7 @@ export default function Footer() {
           <p className="mt-4 text-sm text-zinc-400 leading-relaxed">
             Repuestos originales para tractores Zetor con asesoría técnica real. Validamos compatibilidad antes de despachar — porque sabemos que tu trabajo no puede esperar.
           </p>
-          <a
-            href={generalWhatsAppMessage()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-5 inline-flex items-center gap-2 bg-whatsapp text-white px-4 py-2.5 text-sm font-bold uppercase tracking-wider rounded-sm hover:bg-[#1EBE5A]"
-            data-testid="footer-whatsapp-cta"
-          >
+          <a href={generalWhatsAppMessage()} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex items-center gap-2 bg-whatsapp text-white px-4 py-2.5 text-sm font-bold uppercase tracking-wider rounded-sm hover:bg-[#1EBE5A]" data-testid="footer-whatsapp-cta">
             <MessageCircle className="h-4 w-4" /> Cotizar por WhatsApp
           </a>
         </div>
@@ -80,18 +74,14 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+
       <div className="border-t border-zinc-800">
         <div className="mx-auto max-w-7xl px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-zinc-500">
           <p>© {new Date().getFullYear()} Almacén de Repuestos Zetor — www.almacenzetorrepuestos.com</p>
-          <div className="border-t border-zinc-800">
-  <div className="mx-auto max-w-7xl px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-zinc-500">
-    <p>© {new Date().getFullYear()} Almacén de Repuestos Zetor — www.almacenzetorrepuestos.com</p>
-    <div className="flex flex-col sm:flex-row items-center gap-3">
-      <p className="uppercase tracking-widest">Marcas y referencias propiedad de sus respectivos titulares.</p>
-      <p>Developed by <a href="https://www.jakemate.click" target="_blank" rel="noopener noreferrer" className="text-zetor-red hover:text-white font-bold uppercase tracking-widest">Jake Mate</a></p>
-    </div>
-  </div>
-</div>
+          <div className="flex flex-col sm:flex-row items-center gap-4">
+            <p className="uppercase tracking-widest">Marcas y referencias propiedad de sus respectivos titulares.</p>
+            <p>Developed by <a href="https://www.jakemate.click" target="_blank" rel="noopener noreferrer" className="text-zetor-red hover:text-white font-bold uppercase tracking-widest">Jake Mate</a></p>
+          </div>
         </div>
       </div>
     </footer>
