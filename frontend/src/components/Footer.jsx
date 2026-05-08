@@ -83,7 +83,15 @@ export default function Footer() {
       <div className="border-t border-zinc-800">
         <div className="mx-auto max-w-7xl px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-zinc-500">
           <p>© {new Date().getFullYear()} Almacén de Repuestos Zetor — www.almacenzetorrepuestos.com</p>
-          <p className="uppercase tracking-widest">Marcas y referencias propiedad de sus respectivos titulares.</p>
+          <div className="border-t border-zinc-800">
+  <div className="mx-auto max-w-7xl px-4 py-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-zinc-500">
+    <p>© {new Date().getFullYear()} Almacén de Repuestos Zetor — www.almacenzetorrepuestos.com</p>
+    <div className="flex flex-col sm:flex-row items-center gap-3">
+      <p className="uppercase tracking-widest">Marcas y referencias propiedad de sus respectivos titulares.</p>
+      <p>Developed by <a href="https://www.jakemate.click" target="_blank" rel="noopener noreferrer" className="text-zetor-red hover:text-white font-bold uppercase tracking-widest">Jake Mate</a></p>
+    </div>
+  </div>
+</div>
         </div>
       </div>
     </footer>
