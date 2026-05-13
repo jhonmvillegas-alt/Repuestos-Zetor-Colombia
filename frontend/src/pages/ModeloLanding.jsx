@@ -4,6 +4,7 @@ import { ArrowRight, MessageCircle, Settings, Cog, Wrench, Disc, Filter } from "
 import api from "../lib/api";
 import ProductCard from "../components/ProductCard";
 import { modelWhatsAppMessage } from "../lib/whatsapp";
+import { useSiteSettings } from "../context/SiteSettingsContext";
 
 const MODEL_DETAIL = {
   "5511-5545": { hp: "Serie 55", motor: "Modelos 5511, 5520, 5535, 5545", caja: "Manual estándar", peso: "Variable", aplicacion: "Finca pequeña y mediana, transporte y labores ligeras." },
@@ -16,17 +17,18 @@ const MODEL_DETAIL = {
 };
 
 const SYSTEMS = [
-  { slug: "motor", label: "Motor", icon: Settings },
-  { slug: "hidraulico", label: "Hidráulico", icon: Wrench },
-  { slug: "transmision", label: "Transmisión", icon: Cog },
-  { slug: "frenos", label: "Frenos", icon: Disc },
-  { slug: "filtros", label: "Filtros", icon: Filter },
+  { slug: "motor", label: "Motor", icon: Settings, imageKey: "system_image_motor" },
+  { slug: "hidraulico", label: "Hidráulico", icon: Wrench, imageKey: "system_image_hidraulico" },
+  { slug: "transmision", label: "Transmisión", icon: Cog, imageKey: "system_image_transmision" },
+  { slug: "frenos", label: "Frenos", icon: Disc, imageKey: "system_image_frenos" },
+  { slug: "filtros", label: "Filtros", icon: Filter, imageKey: "system_image_filtros" },
 ];
 
 export default function ModeloLanding() {
   const { modelo } = useParams();
   const data = MODEL_DETAIL[modelo];
   const [products, setProducts] = useState([]);
+  const settings = useSiteSettings();
 
   useEffect(() => {
     if (data) api.get(`/products?modelo=${modelo}&limit=12`).then((r) => setProducts(r.data.items || []));
@@ -36,7 +38,6 @@ export default function ModeloLanding() {
 
   return (
     <div className="bg-white">
-      {/* Hero */}
       <section className="relative bg-carbon text-white">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:py-24 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7">
@@ -78,18 +79,27 @@ export default function ModeloLanding() {
         </div>
       </section>
 
-      {/* Sistemas para este modelo */}
       <section className="py-16 bg-zinc-50">
         <div className="mx-auto max-w-7xl px-4">
           <h2 className="font-display font-black uppercase text-3xl sm:text-4xl tracking-tighter">Repuestos por sistema · <span className="text-zetor-red">Zetor {modelo}</span></h2>
           <div className="mt-8 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
             {SYSTEMS.map((s) => {
               const Icon = s.icon;
+              const image = settings[s.imageKey];
               return (
-                <Link key={s.slug} to={`/catalogo?sistema=${s.slug}&modelo=${modelo}`} className="industrial-card p-5 rounded-sm flex flex-col gap-3 group" data-testid={`modelo-system-${s.slug}`}>
-                  <Icon className="h-6 w-6 text-zetor-red" />
-                  <p className="font-display font-black uppercase tracking-tight text-lg">{s.label}</p>
-                  <ArrowRight className="h-4 w-4 text-zinc-400 group-hover:text-zetor-red group-hover:translate-x-1 transition" />
+                <Link key={s.slug} to={`/catalogo?sistema=${s.slug}&modelo=${modelo}`} className="relative rounded-sm overflow-hidden group h-40 flex items-end" data-testid={`modelo-system-${s.slug}`}>
+                  {image ? (
+                    <img src={image} alt={s.label} className="absolute inset-0 h-full w-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                  ) : (
+                    <div className="absolute inset-0 bg-zinc-200 grid place-items-center">
+                      <Icon className="h-8 w-8 text-zinc-400" />
+                    </div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                  <div className="relative p-3 w-full flex items-end justify-between">
+                    <p className="font-display font-black uppercase tracking-tight text-white text-lg">{s.label}</p>
+                    <ArrowRight className="h-4 w-4 text-white group-hover:translate-x-1 transition" />
+                  </div>
                 </Link>
               );
             })}
@@ -97,7 +107,6 @@ export default function ModeloLanding() {
         </div>
       </section>
 
-      {/* Productos compatibles */}
       <section className="py-16">
         <div className="mx-auto max-w-7xl px-4">
           <div className="flex items-end justify-between mb-6">
