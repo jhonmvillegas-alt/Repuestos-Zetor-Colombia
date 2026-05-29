@@ -1,49 +1,590 @@
 [
-  {"sku":"B1055011106","nombre":"Palanquita Embrague","categoria_original":"Bombas","sistema":"transmision","drive_image":"https://drive.google.com/file/d/1DIBUS_oH4QtMqRmCYIxE-H6uvszfiyny/view?usp=drivesdk"},
-  {"sku":"B10954631","nombre":"Bomba Alce Hidráulico","categoria_original":"Bombas","sistema":"hidraulico","drive_image":"https://drive.google.com/file/d/1Agm1rqvNfSMEdsgMHXOCo6Qg2-uZPsVc/view?usp=drivesdk"},
-  {"sku":"B1070118320","nombre":"Bomba de Dirección","categoria_original":"Bombas","sistema":"hidraulico","drive_image":"https://drive.google.com/file/d/1C7Uurqkjvl-f_F2ksLAs1ey9FmFfGoZ7/view?usp=drivesdk"},
-  {"sku":"B1069010651","nombre":"Bomba de Agua 1 Salida","categoria_original":"Bombas","sistema":"motor","drive_image":"https://drive.google.com/file/d/1yL7ZApBg9xsJcc3btKiQkMwG16vbuEJ8/view?usp=drivesdk"},
-  {"sku":"B1062010615","nombre":"Bomba de Agua 2 Salidas","categoria_original":"Bombas","sistema":"motor","drive_image":"https://drive.google.com/file/d/1OGPQDxm1dNo5lVxMDIjzx_cZQzZKwc4d/view?usp=drivesdk"},
-  {"sku":"B10933272","nombre":"Bomba Auxiliar 2 Huecos","categoria_original":"Bombas","sistema":"motor","drive_image":"https://drive.google.com/file/d/1BzsqO-X2KiUIAlwizecyLh7Ytp00PB4Q/view?usp=drivesdk"},
-  {"sku":"B10933383","nombre":"Bomba Hueco 3 Huecos","categoria_original":"Bombas","sistema":"motor","drive_image":"https://drive.google.com/file/d/1XaJOVxYBZhEJu5DbnjI8W-kAhpAZoUQq/view?usp=drivesdk"},
-  {"sku":"B1069112717","nombre":"Bomba de Inyección 7011","categoria_original":"Bombas","sistema":"motor","drive_image":"https://drive.google.com/file/d/1dQ6xcMOpkSaRkVcrYj4Za7IaYWUM7VGP/view?usp=drivesdk"},
-  {"sku":"B10975032","nombre":"Bomba de Inyección 6911","categoria_original":"Bombas","sistema":"motor","drive_image":"https://drive.google.com/file/d/1ggXkYXCWfFjotzKsNq5d9SuSeqP6_r6l/view?usp=drivesdk"},
-  {"sku":"B1067453202","nombre":"Piñón Satélite","categoria_original":"Piñón","sistema":"transmision","drive_image":"https://drive.google.com/file/d/1friyD-zyXp6K8z0ehJfpTiAlGGo28IXm/view?usp=drivesdk"},
-  {"sku":"B1067453254","nombre":"Piñón Central","categoria_original":"Piñón","sistema":"transmision","drive_image":"https://drive.google.com/file/d/12nQhek6G_jdIBg6Vnf0TTS93kWil0RQL/view?usp=drivesdk"},
-  {"sku":"B1067453201","nombre":"Porta Satélite","categoria_original":"Portal","sistema":"transmision","drive_image":"https://drive.google.com/file/d/18dlgQKeQ-x-l8MAIl4YMx0a7ECFqrIzS/view?usp=drivesdk"},
-  {"sku":"B1067453211","nombre":"Araña","categoria_original":"Rueda","sistema":"transmision","drive_image":null},
-  {"sku":"B1069010554","nombre":"Válvulas Admisión 6911","categoria_original":"Válvula","sistema":"motor","drive_image":"https://drive.google.com/file/d/1p5hC9MUhV6zvhclZWdzzRnKjqQMP9s0M/view?usp=drivesdk"},
-  {"sku":"B1069010555","nombre":"Válvula Escape 6911","categoria_original":"Válvula","sistema":"motor","drive_image":"https://drive.google.com/file/d/1p5hC9MUhV6zvhclZWdzzRnKjqQMP9s0M/view?usp=drivesdk"},
-  {"sku":"B1060115605","nombre":"Tablero de Instrumentos","categoria_original":"Tablero","sistema":"motor","drive_image":"https://drive.google.com/file/d/1YHMT59-5cj76qkkyyI91dD_EM28w13Ud/view?usp=drivesdk"},
-  {"sku":"B1067010239","nombre":"Empaquetadura Motor","categoria_original":"Empaquetadura","sistema":"motor","drive_image":null},
-  {"sku":"B1070011305","nombre":"Radiador","categoria_original":"Motor","sistema":"motor","drive_image":null},
-  {"sku":"B1070110099","nombre":"Kit Motor 102 M","categoria_original":"Kit","sistema":"motor","drive_image":"https://drive.google.com/file/d/13_tLJUpVZZGCb49dOGC0ND5-d1rw9gZ_/view?usp=drivesdk"},
-  {"sku":"B1055110018","nombre":"Kit Motor 95 M","categoria_original":"Kit","sistema":"motor","drive_image":null},
-  {"sku":"M2089003959","nombre":"Kit Motor 110 Turbo","categoria_original":"Kit","sistema":"motor","drive_image":null},
-  {"sku":"B1059453001","nombre":"Caja Mando","categoria_original":"Caja","sistema":"transmision","drive_image":null},
-  {"sku":"B10706945","nombre":"Silla Negra","categoria_original":"Silla","sistema":"motor","drive_image":null},
-  {"sku":"B1070694501","nombre":"Silla Multicolor","categoria_original":"Silla","sistema":"motor","drive_image":null},
-  {"sku":"B1050110096","nombre":"Anillos 102M","categoria_original":"Anillos","sistema":"motor","drive_image":"https://drive.google.com/file/d/1ehkEOmFNoO3aKHbg37Ao4fIIsrftKJWg/view?usp=drivesdk"},
-  {"sku":"B1099110955","nombre":"Anillos 110 Natural","categoria_original":"Anillos","sistema":"motor","drive_image":null},
-  {"sku":"B1011111113","nombre":"Anillos 110 Turbo","categoria_original":"Anillos","sistema":"motor","drive_image":null},
-  {"sku":"B1055010095","nombre":"Anillos 95M","categoria_original":"Anillos","sistema":"motor","drive_image":null},
-  {"sku":"M2084420901","nombre":"Bomba Alce Hidráulico Cristal","categoria_original":"Bomba","sistema":"hidraulico","drive_image":null},
-  {"sku":"B10975051","nombre":"Depósito 1 Salida","categoria_original":"Depósito","sistema":"hidraulico","drive_image":"https://drive.google.com/file/d/1rkT7m9PeGlb-Q76g4E3GlQBTsK4YzkGA/view?usp=drivesdk"},
-  {"sku":"B1070112712","nombre":"Depósito 2 Salidas","categoria_original":"Depósito","sistema":"hidraulico","drive_image":"https://drive.google.com/file/d/17Ifjaimx-BCE8wtyNiaxb5eSIeKGn4sx/view?usp=drivesdk"},
-  {"sku":"B1060011360","nombre":"Ventilador","categoria_original":"Ventilador","sistema":"motor","drive_image":"https://drive.google.com/file/d/102p2GDVmqJUT5VjmoK7KebA0erslJtS-/view?usp=drivesdk"},
-  {"sku":"B1071010309","nombre":"Biela con Pesa","categoria_original":"Biela","sistema":"motor","drive_image":"https://drive.google.com/file/d/1JxbQRyD35Qdi-Q_JAKj6Sqzw1y5oXczC/view?usp=drivesdk"},
-  {"sku":"B1069010389","nombre":"Biela sin Pesa","categoria_original":"Biela","sistema":"motor","drive_image":"https://drive.google.com/file/d/1eOFHcJBf7v1MthGYBgTGo2HgAiZb42mT/view?usp=drivesdk"},
-  {"sku":"B1055010221","nombre":"Retenedor Trasero","categoria_original":"Retenedor","sistema":"motor","drive_image":"https://drive.google.com/file/d/1n-T5tSMcPx2ndzK0GCU3cV3g7HYoam-D/view?usp=drivesdk"},
-  {"sku":"B10974240","nombre":"Retenedor Delantero","categoria_original":"Retenedor","sistema":"motor","drive_image":"https://drive.google.com/file/d/13cO8t6mzyTCx2Zef6Oj38SdQnDmGaCNV/view?usp=drivesdk"},
-  {"sku":"B1055010509","nombre":"Múltiple de Escape","categoria_original":"Múltiple","sistema":"motor","drive_image":"https://drive.google.com/file/d/1Z77fNpVZ9z3QQ5wgYPcPlgxTfyJ4rKkf/view?usp=drivesdk"},
-  {"sku":"B10950316","nombre":"Cremallera","categoria_original":"Cremallera","sistema":"transmision","drive_image":"https://drive.google.com/file/d/1osqkPqYhhidQG62Xg1JlHrpefpUmAmA1/view?usp=drivesdk"},
-  {"sku":"B1055111996","nombre":"Funda 28 Dientes","categoria_original":"Funda","sistema":"transmision","drive_image":null},
-  {"sku":"B1060111914","nombre":"Funda 29 Dientes","categoria_original":"Funda","sistema":"transmision","drive_image":null},
-  {"sku":"B1067115711","nombre":"Farola Trasera","categoria_original":"Farola","sistema":"motor","drive_image":null},
-  {"sku":"B1067453520","nombre":"Terminal Izquierda","categoria_original":"Terminal","sistema":"transmision","drive_image":null},
-  {"sku":"B1067453521","nombre":"Terminal Derecha","categoria_original":"Terminal","sistema":"transmision","drive_image":null},
-  {"sku":"B1069112616","nombre":"Albesto Frenos","categoria_original":"Albesto","sistema":"frenos","drive_image":null},
-  {"sku":"B10950942","nombre":"Camisa Compresor","categoria_original":"Camisa","sistema":"motor","drive_image":null},
-  {"sku":"B1072011141","nombre":"Disco Embrague","categoria_original":"Disco","sistema":"transmision","drive_image":null},
-  {"sku":"B1070011191","nombre":"Disco Toma Fuerza","categoria_original":"Disco","sistema":"transmision","drive_image":null}
+  {
+    "sku": "B1055011106",
+    "nombre": "PALNQUITA EMBRAGUE",
+    "categoria_original": "BOMBAS",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1DIBUS_oH4QtMqRmCYIxE-H6uvszfiyny/view?usp=drivesdk"
+  },
+  {
+    "sku": "B10954631",
+    "nombre": "BOMBA ALCE HIDRAULICO",
+    "categoria_original": "BOMBAS",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1Agm1rqvNfSMEdsgMHXOCo6Qg2-uZPsVc/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1070118320",
+    "nombre": "BOMBA DE DIRECCION",
+    "categoria_original": "BOMBAS",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1C7Uurqkjvl-f_F2ksLAs1ey9FmFfGoZ7/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1069010651",
+    "nombre": "BOMBA DE AGUA 1 SALIDA",
+    "categoria_original": "BOMBAS",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1yL7ZApBg9xsJcc3btKiQkMwG16vbuEJ8/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1062010615",
+    "nombre": "BOMBA DE AGUA 2 SALIDAS",
+    "categoria_original": "BOMBAS",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1OGPQDxm1dNo5lVxMDIjzx_cZQzZKwc4d/view?usp=drivesdk"
+  },
+  {
+    "sku": "B10933272",
+    "nombre": "BOMBA AUXILIAR 2 HUECOS",
+    "categoria_original": "BOMBAS",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1BzsqO-X2KiUIAlwizecyLh7Ytp00PB4Q/view?usp=drivesdk"
+  },
+  {
+    "sku": "B10933383",
+    "nombre": "BOMBA HUECO 3 HUECOS",
+    "categoria_original": "BOMBAS",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1XaJOVxYBZhEJu5DbnjI8W-kAhpAZoUQq/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1069112717",
+    "nombre": "BOMBA DE 7011",
+    "categoria_original": "BOMBAS",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1dQ6xcMOpkSaRkVcrYj4Za7IaYWUM7VGP/view?usp=drivesdk"
+  },
+  {
+    "sku": "B10975032",
+    "nombre": "BOMBA DE 6911",
+    "categoria_original": "BOMBAS",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1ggXkYXCWfFjotzKsNq5d9SuSeqP6_r6l/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1067453202",
+    "nombre": "PIÑON SATELITE",
+    "categoria_original": "PIÑON",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1friyD-zyXp6K8z0ehJfpTiAlGGo28IXm/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1067453254",
+    "nombre": "PIÑON CENTRAL",
+    "categoria_original": "PIÑON",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/12nQhek6G_jdIBg6Vnf0TTS93kWil0RQL/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1067453201",
+    "nombre": "PORTA SATELITE",
+    "categoria_original": "PORTAL",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/18dlgQKeQ-x-l8MAIl4YMx0a7ECFqrIzS/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1067453211",
+    "nombre": "ARAÑA",
+    "categoria_original": "RUEDA",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1pXa59ssOin77ccJF-EZXRI-OscSTGnPu/view?usp=drive_link"
+  },
+  {
+    "sku": "B1069010554",
+    "nombre": "VALVULAS ADMISION 6911",
+    "categoria_original": "VALVULA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1p5hC9MUhV6zvhclZWdzzRnKjqQMP9s0M/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1069010555",
+    "nombre": "VALVULA ESCAPE  6911",
+    "categoria_original": "VALVULA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1p5hC9MUhV6zvhclZWdzzRnKjqQMP9s0M/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1060115605",
+    "nombre": "TABLERO DE INTRUMENTOS",
+    "categoria_original": "TABLERO",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1YHMT59-5cj76qkkyyI91dD_EM28w13Ud/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1067010239",
+    "nombre": "EMPAQUETADURA MOTOR",
+    "categoria_original": "EMPAQUETADURA",
+    "sistema": "motor",
+    "drive_image": null
+  },
+  {
+    "sku": "B1070011305",
+    "nombre": "RADIADOR  MOTOR",
+    "categoria_original": "RADIADOR",
+    "sistema": "motor",
+    "drive_image": null
+  },
+  {
+    "sku": "B1070110099",
+    "nombre": "KIT MOTOR 102 M",
+    "categoria_original": "KIT",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/13_tLJUpVZZGCb49dOGC0ND5-d1rw9gZ_/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1055110018",
+    "nombre": "KIT MOTOR 95 M",
+    "categoria_original": "KIT",
+    "sistema": "motor",
+    "drive_image": null
+  },
+  {
+    "sku": "M2089003959",
+    "nombre": "KIT MOTOR 110 TURBO",
+    "categoria_original": "KIT",
+    "sistema": "motor",
+    "drive_image": null
+  },
+  {
+    "sku": "B1059453001",
+    "nombre": "CAJA MANDO",
+    "categoria_original": "CAJA",
+    "sistema": "transmision",
+    "drive_image": null
+  },
+  {
+    "sku": "B10706945",
+    "nombre": "SILLA NEGRA",
+    "categoria_original": "SILLA",
+    "sistema": "motor",
+    "drive_image": null
+  },
+  {
+    "sku": "B1070694501",
+    "nombre": "SILLA MULTICOLOR",
+    "categoria_original": "SILLA",
+    "sistema": "motor",
+    "drive_image": null
+  },
+  {
+    "sku": "B1057112102",
+    "nombre": "BALINERA ENBRAGUE",
+    "categoria_original": "Balinera",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1R_P-DLXhKI4xEeXQoSkNwRilvL0g2FkD/view?usp=drive_link"
+  },
+  {
+    "sku": "M2089003959",
+    "nombre": "ANILLOS 110 NATURAL",
+    "categoria_original": "ANILLOS",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1G1ZwD0TgtddIlrRjPDL4y9usjSrfs-S7/view?usp=drive_link"
+  },
+  {
+    "sku": "B1011111113",
+    "nombre": "ANILLOS 110 TURBO",
+    "categoria_original": "ANILLOS",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1pdolUfVU2SLqhhT6rFQ0dYa0XHYVbI4o/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055010095",
+    "nombre": "ANILLOS 95M",
+    "categoria_original": "ANILLOS",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1x7BUayJJSiFfOuxPXY7AbZ-0hvwGSzGs/view?usp=drive_link"
+  },
+  {
+    "sku": "M2084420901",
+    "nombre": "BOMBA ALCEHIDRAULICO CRISTAL",
+    "categoria_original": "BOMBA",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1P-UG3jFvwnx8Ve1kg9qDuDqqHGg4-Rv-/view?usp=drive_link"
+  },
+  {
+    "sku": "B10975051",
+    "nombre": "DEPOSITO 1 SALIDA",
+    "categoria_original": "DEPOSITO",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/1rkT7m9PeGlb-Q76g4E3GlQBTsK4YzkGA/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1070112712",
+    "nombre": "DEPOSITO 2 SALIDAS",
+    "categoria_original": "DEPOSITO",
+    "sistema": "hidraulico",
+    "drive_image": "https://drive.google.com/file/d/17Ifjaimx-BCE8wtyNiaxb5eSIeKGn4sx/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1060011360",
+    "nombre": "VENTILADOR",
+    "categoria_original": "VENTILADOR",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/102p2GDVmqJUT5VjmoK7KebA0erslJtS-/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1071010309",
+    "nombre": "BIELA CON PESA",
+    "categoria_original": "BIELA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1JxbQRyD35Qdi-Q_JAKj6Sqzw1y5oXczC/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1069010389",
+    "nombre": "BIELA SIN PESA",
+    "categoria_original": "BIELA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1eOFHcJBf7v1MthGYBgTGo2HgAiZb42mT/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1055010221",
+    "nombre": "RETENEDOR TRASERO",
+    "categoria_original": "RETENEDOR",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1n-T5tSMcPx2ndzK0GCU3cV3g7HYoam-D/view?usp=drivesdk"
+  },
+  {
+    "sku": "B10974240",
+    "nombre": "RETENEDOR DELANTERO",
+    "categoria_original": "RETENEDOR",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/13cO8t6mzyTCx2Zef6Oj38SdQnDmGaCNV/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1055010509",
+    "nombre": "MULTIPLE DE ESCAPE",
+    "categoria_original": "MULTIPLE",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1Z77fNpVZ9z3QQ5wgYPcPlgxTfyJ4rKkf/view?usp=drivesdk"
+  },
+  {
+    "sku": "B10950316",
+    "nombre": "CREMALLERA",
+    "categoria_original": "CREMALLERA",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1osqkPqYhhidQG62Xg1JlHrpefpUmAmA1/view?usp=drivesdk"
+  },
+  {
+    "sku": "B1055111996",
+    "nombre": "FUNDA 28 DIENTES",
+    "categoria_original": "FUNDA",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1uZOj7RPoYCp29eGJpQYe-oeSVI195qrZ/view?usp=drive_link"
+  },
+  {
+    "sku": "B1060111914",
+    "nombre": "FUNDA 29 DIENTES",
+    "categoria_original": "FUNDA",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1jk-efIPtWgpm8IEoJwdaYd2V4Hpx6DGz/view?usp=drive_link"
+  },
+  {
+    "sku": "B1067115711",
+    "nombre": "FAROLA TRASERA",
+    "categoria_original": "FAROLA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1hRMUHgxRbeDEMJXlaQqntrCx_iyFYxq6/view?usp=drive_link"
+  },
+  {
+    "sku": "B1067453520",
+    "nombre": "TERMINAL IZQUIERDA",
+    "categoria_original": "TERMINAL",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1TlyD3Pi7xVsQdps2DcRd97xQOwTt4MZB/view?usp=drive_link"
+  },
+  {
+    "sku": "B1067453521",
+    "nombre": "TERMINAL DERECHA",
+    "categoria_original": "TERMINAL",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1vz9K2fFpz1UkOfx_Fzzh0H3AiQLPpip7/view?usp=drive_link"
+  },
+  {
+    "sku": "B1069112616",
+    "nombre": "ALBESTO",
+    "categoria_original": "ALBESTO",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1wCFtoQdyZDWzox4hxoRopctnzaA7-Ns8/view?usp=drive_link"
+  },
+  {
+    "sku": "B10950942",
+    "nombre": "CAMISA COMPRESOR",
+    "categoria_original": "CAMISA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1UHedFX5K973ixBL7wgzCZN1Uw1vszUpl/view?usp=drive_link"
+  },
+  {
+    "sku": "B1072011141",
+    "nombre": "DISCO EMBRAGUE",
+    "categoria_original": "DISCO",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1qBP26rzNIwTLQfopsnVgBRoAaRk5-4rE/view?usp=drive_link"
+  },
+  {
+    "sku": "B1070011191",
+    "nombre": "DISCO TOMA FUERZA",
+    "categoria_original": "DISCO",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1ILQHXK_1cGKn0Rfl3d72sPOVrJj1uBdB/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055010527",
+    "nombre": "EMPAQUE TAPA VALVULA",
+    "categoria_original": "EMPAQUE",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1aw4YpG1IVX450UlrimGG43POJlPPO15R/view?usp=drive_link"
+  },
+  {
+    "sku": "B10972311",
+    "nombre": "TAPON CHAPA",
+    "categoria_original": "TAPON",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1CNpWSWTPkTktVes7BP0sEhFTPsBTaxag/view?usp=drive_link"
+  },
+  {
+    "sku": "B10974393",
+    "nombre": "JUNTA LISA",
+    "categoria_original": "JUNTA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1ywKSXUAB7qPUCNyHU2b47smQabC7-x6w/view?usp=drive_link"
+  },
+  {
+    "sku": "B1040112620",
+    "nombre": "ANILLO PERFILADO",
+    "categoria_original": "ANILLO",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1IFPdzPX9Dj6DcvC4quIdRA_lhsXFt26B/view?usp=drive_link"
+  },
+  {
+    "sku": "B1040112607",
+    "nombre": "JUNTA PERFILADA",
+    "categoria_original": "JUNTA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1IFPdzPX9Dj6DcvC4quIdRA_lhsXFt26B/view?usp=drive_link"
+  },
+  {
+    "sku": "B10932130",
+    "nombre": "RESORTE LLAMADO",
+    "categoria_original": "RESORTE",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1H1eCN3tJ6vuzYup7vrHfvqhUowJ9EssF/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055111930",
+    "nombre": "PIÑON 2 Y 3",
+    "categoria_original": "PIÑON",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1v1-tjIqRbJAkyVe9Al6CkdJxza7391xk/view?usp=drive_link"
+  },
+  {
+    "sku": "B10932301",
+    "nombre": "SELENOIDE/AUTOMATICO",
+    "categoria_original": "Selenoide/automatico",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1KbZKq3u42gjKqsFwQliGAnJW-0jteY-b/view?usp=drive_link"
+  },
+  {
+    "sku": "B1069010363",
+    "nombre": "POLEA MOTOR",
+    "categoria_original": "POLEA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1BVpZ4xhN3q3EFXC2JoOsQX4N0WwvEi-Q/view?usp=drive_link"
+  },
+  {
+    "sku": "B10690657",
+    "nombre": "POLEA BOMBA DE AGU A",
+    "categoria_original": "POLEA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1pYMqmw27X0FhJE3tQI6xSm0GQzhvrTe0/view?usp=drive_link"
+  },
+  {
+    "sku": "B10930901",
+    "nombre": "CULATA COMPRESOR",
+    "categoria_original": "CULTA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1jbFUVys2_9lRo9yVUgDWgtVEn4VB-tHk/view?usp=drive_link"
+  },
+  {
+    "sku": "B1060011335",
+    "nombre": "RADIADOR  MOTOR",
+    "categoria_original": "RADIADOR",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1esai2GQ9Affwfi4cNWHfyE1yH-EW2Q9Z/view?usp=drive_link"
+  },
+  {
+    "sku": "B1059111901",
+    "nombre": "ARBOL RANURADO",
+    "categoria_original": "EJE",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1vPlit64I4wLMIrGKaMVsk3OrYuUn7Fpo/view?usp=drive_link"
+  },
+  {
+    "sku": "B1070112726",
+    "nombre": "ORQUILLA DESEMBRAGUE",
+    "categoria_original": "ORQUILLA",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1ORo5WOcXnh7M085Wo1dhtHqFrRVi4Seh/view?usp=drive_link"
+  },
+  {
+    "sku": "B1088170084",
+    "nombre": "ARTICULACION H",
+    "categoria_original": "H",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1W_OCxFimHYN3DoX9kVTM_26cETV4s9uj/view?usp=drive_link"
+  },
+  {
+    "sku": "B10930558",
+    "nombre": "INYECTOR TOBERA",
+    "categoria_original": "INYECTOR",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1pjkDCQU0GLnGM-5DB_YpRBKEugzFTXL4/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055010421",
+    "nombre": "PIÑON CUÑA",
+    "categoria_original": "PIÑON",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/16SBL_H6okT0-vY15m107RrK6yslWNDq5/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055010402",
+    "nombre": "PIÑON LOCO",
+    "categoria_original": "PIÑON",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/17zXdkLc71Zon9kRPKOJgpvuqo9bSqBSr/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055010426",
+    "nombre": "PIÑON  BANCADA",
+    "categoria_original": "PIÑON",
+    "sistema": "transmision",
+    "drive_image": "https://drive.google.com/file/d/1LDBjQuNamuY-D2a07Sy7DLf-h07tDKEo/view?usp=drive_link"
+  },
+  {
+    "sku": "B1069010287",
+    "nombre": "TAPA LATERAL LLENADO",
+    "categoria_original": "TAPA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1QVZUOZY2Kz93QKLh_beKfpbiSzu_oJLX/view?usp=drive_link"
+  },
+  {
+    "sku": "B10931254",
+    "nombre": "IMPOSICION TAMIZ",
+    "categoria_original": "FILTRO",
+    "sistema": "filtros",
+    "drive_image": "https://drive.google.com/file/d/1_83Jk7MK5Xdvzwlz7h6P6btCQdiBp_pO/view?usp=drive_link"
+  },
+  {
+    "sku": "B10950406",
+    "nombre": "VARILLA LEVANTA VALVULA",
+    "categoria_original": "VARILLA",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1R7z7ljSmiQ-Cboeeuy1w0ip6LekVUFfP/view?usp=drive_link"
+  },
+  {
+    "sku": "B1070113502",
+    "nombre": "SIN FIN 73CM",
+    "categoria_original": "Sin",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1vEYzf62HfqEDm2rviFh0VXXkUWqUx6nq/view?usp=drive_link"
+  },
+  {
+    "sku": "B1069113509",
+    "nombre": "SIN FIN",
+    "categoria_original": "Sin",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1VzZH0PoIwm2Tl-7By-JjLXBM-FlzZf6q/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055115203",
+    "nombre": "TABLERO INTRUMENTOS RELOJ",
+    "categoria_original": "Tablero",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/12zwN51M0ku1hAoSSvDooydumLICM3ZQc/view?usp=drive_link"
+  },
+  {
+    "sku": "B109532801",
+    "nombre": "TAPA DELANTERA",
+    "categoria_original": "Tapa",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1iGWpVCA0C57zxNiWmi26XpOrPbK-1bWA/view?usp=drive_link"
+  },
+  {
+    "sku": "B1069112615",
+    "nombre": "ZAPATA COMPLETA",
+    "categoria_original": "Zapata",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1mH-KdrAQKOnBy-eM6AcgrMao0LVfvOXs/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055010600",
+    "nombre": "EMPAQUETADURA BOMBA DE AGUA",
+    "categoria_original": "Empaquetadura",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1KVniIiyh_bOwNfuRwHeFo5HwlBIqSJka/view?usp=drive_link"
+  },
+  {
+    "sku": "B1059453001",
+    "nombre": "CAJA MANDO",
+    "categoria_original": "Caja",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/163CawY5NpAlzRtc6OO-kIWlT8sPu-1vk/view?usp=drive_link"
+  },
+  {
+    "sku": "B1069010733",
+    "nombre": "ALCACHOFA",
+    "categoria_original": "Alcachofa",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1jQvFRdsd3bLtGSAib9VfvVgHO1ARa247/view?usp=drive_link"
+  },
+  {
+    "sku": "B1070114605",
+    "nombre": "EJE",
+    "categoria_original": "Eje",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1yjhT24wQZE7zPRQNqdvhgWDGY2YQcX0-/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055010116",
+    "nombre": "NIVELADOR ACEITE",
+    "categoria_original": "Nivelador",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1D5brZqvh2bkLa-Sxi9fvxTSWVyJ7Bb4y/view?usp=drive_link"
+  },
+  {
+    "sku": "B1055011312",
+    "nombre": "MANGUERA COPA",
+    "categoria_original": "Manguera",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1BWW7CWNHqB-XQv9hpGmBLRvIsJs56UdI/view?usp=drive_link"
+  },
+  {
+    "sku": "B1070010679",
+    "nombre": "SEPARADOR",
+    "categoria_original": "Separador",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1IzXfgsIt9S8GwcvessDyXuq6v_6H-UcR/view?usp=drive_link"
+  },
+  {
+    "sku": "B10950836",
+    "nombre": "ACOPLE RANURADO",
+    "categoria_original": "Acople",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/187vwhAB1tAl78RirSdgC-O-YpR5q9wrz/view?usp=drive_link"
+  },
+  {
+    "sku": "B10933271",
+    "nombre": "PREFILTRO",
+    "categoria_original": "Prefiltro",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/187vwhAB1tAl78RirSdgC-O-YpR5q9wrz/view?usp=drive_link"
+  },
+  {
+    "sku": "B1067112603",
+    "nombre": "CILINDRO FRENO",
+    "categoria_original": "Cilindro",
+    "sistema": "motor",
+    "drive_image": "https://drive.google.com/file/d/1ZoyAWGZrwslrP6p4cRITtM0TGtaxzvYQ/view?usp=drive_link"
+  }
 ]
