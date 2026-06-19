@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { MessageCircle, ChevronRight } from "lucide-react";
 import { productWhatsAppMessage } from "../lib/whatsapp";
+import { withSmartCrop } from "../lib/cloudinary";
 
 const SYSTEM_FALLBACK_IMG = {
   motor: "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
@@ -25,7 +26,7 @@ export default function ProductCard({ product }) {
       <Link to={`/producto/${product.slug}`} className="relative block aspect-square bg-zinc-100 overflow-hidden group">
         {product.imagen_principal ? (
           <img
-            src={product.imagen_principal}
+            src={withSmartCrop(product.imagen_principal)}
             alt={product.nombre}
             className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
