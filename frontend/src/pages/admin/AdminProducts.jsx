@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Plus, Pencil, Trash2, X, Upload, Search, Check, ImageIcon, FileSpreadsheet, AlertCircle, CheckCircle2 } from "lucide-react";
 import api from "../../lib/api";
 
-const SYSTEMS = ["motor", "hidraulico", "transmision", "frenos", "filtros"];
+const SYSTEMS = ["motor", "hidraulico", "transmision", "frenos", "filtros", "electrico", "accesorios"];
 const MODELS = ["5511-5545", "5711-5745", "6711-6745", "6911-6945", "7011-7045", "7211-7245", "8011-12045"];
 
 const emptyForm = {

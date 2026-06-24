@@ -10,6 +10,8 @@ const SYSTEMS = [
   { slug: "transmision", label: "Transmisión" },
   { slug: "frenos", label: "Frenos" },
   { slug: "filtros", label: "Filtros" },
+  { slug: "electrico", label: "Eléctrico" },
+  { slug: "accesorios", label: "Accesorios" },
 ];
 const MODELS = ["5511-5545", "5711-5745", "6711-6745", "6911-6945", "7011-7045", "7211-7245", "8011-12045"];
 

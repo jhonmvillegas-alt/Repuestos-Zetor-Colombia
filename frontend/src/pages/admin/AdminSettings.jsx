@@ -20,6 +20,8 @@ const SECTIONS = [
       { key: "system_image_transmision", label: "Transmisión", type: "image" },
       { key: "system_image_frenos", label: "Frenos", type: "image" },
       { key: "system_image_filtros", label: "Filtros", type: "image" },
+      { key: "system_image_electrico", label: "Eléctrico", type: "image" },
+      { key: "system_image_accesorios", label: "Accesorios", type: "image" },
     ],
   },
   {

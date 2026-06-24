@@ -6,7 +6,7 @@ import ProductCard from "../components/ProductCard";
 import { productWhatsAppMessage, generalWhatsAppMessage, formatWhatsAppDisplay } from "../lib/whatsapp";
 import { withSmartCrop } from "../lib/cloudinary";
 
-const SYS_LABELS = { motor: "Motor", hidraulico: "Hidráulico", transmision: "Transmisión", frenos: "Frenos", filtros: "Filtros" };
+const SYS_LABELS = { motor: "Motor", hidraulico: "Hidráulico", transmision: "Transmisión", frenos: "Frenos", filtros: "Filtros", electrico: "Eléctrico", accesorios: "Accesorios" };
 
 export default function ProductoDetalle() {
   const { slug } = useParams();
@@ -56,7 +56,7 @@ export default function ProductoDetalle() {
           <div className="aspect-square bg-zinc-100 rounded-sm overflow-hidden border border-zinc-200">
             {activeImg ? (
               <img src={withSmartCrop(activeImg, 1200)} alt={p.nombre} className="h-full w-full object-cover" data-testid="product-main-image" onError={(e) => {
-                const fb = {motor: "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", hidraulico: "https://images.unsplash.com/photo-1759692071969-c32285cffc40?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", transmision: "https://images.unsplash.com/photo-1667339240140-1aee60bea0e5?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", frenos: "https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", filtros: "https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200"}[p.sistema];
+                const fb = {motor: "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", hidraulico: "https://images.unsplash.com/photo-1759692071969-c32285cffc40?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", transmision: "https://images.unsplash.com/photo-1667339240140-1aee60bea0e5?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", frenos: "https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", filtros: "https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", electrico: "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200", accesorios: "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=1200"}[p.sistema];
                 if (fb && e.currentTarget.src !== fb) e.currentTarget.src = fb;
               }} />
             ) : (

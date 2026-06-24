@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Wrench, Settings, Cog, Disc, Filter, MessageCircle, Phone, ShieldCheck, Truck, ClipboardCheck } from "lucide-react";
+import { ArrowRight, Wrench, Settings, Cog, Disc, Filter, MessageCircle, Phone, ShieldCheck, Truck, ClipboardCheck, Zap, Package } from "lucide-react";
 import api from "../lib/api";
 import ProductCard from "../components/ProductCard";
 import { generalWhatsAppMessage, modelWhatsAppMessage, formatWhatsAppDisplay } from "../lib/whatsapp";
@@ -12,6 +12,8 @@ const SYSTEM_META = {
   transmision: { label: "Transmisión", icon: Cog, key: "system_image_transmision" },
   frenos: { label: "Frenos", icon: Disc, key: "system_image_frenos" },
   filtros: { label: "Filtros", icon: Filter, key: "system_image_filtros" },
+  electrico: { label: "Eléctrico", icon: Zap, key: "system_image_electrico" },
+  accesorios: { label: "Accesorios", icon: Package, key: "system_image_accesorios" },
 };
 
 const MODEL_META = {

@@ -35,6 +35,8 @@ SYSTEMS = {
     "transmision": "Transmisión",
     "frenos": "Frenos",
     "filtros": "Filtros",
+    "electrico": "Eléctrico",
+    "accesorios": "Accesorios",
 }
 MODELS = ["5511-5545", "5711-5745", "6711-6745", "6911-6945", "7011-7045", "7211-7245", "8011-12045"]
 
@@ -477,7 +479,10 @@ SYSTEM_KEYWORDS = {
                     "funda", "cremallera", "terminal", "disco", "caja", "transmis"],
     "motor": ["bomba", "anillo", "biela", "valvula", "válvula", "kit motor", "kit ", "radiador",
               "ventilador", "retenedor", "multiple", "múltiple", "camisa", "empaq", "tablero",
-              "silla", "farola", "pistón", "piston", "motor"],
+              "pistón", "piston", "motor"],
+    "electrico": ["bateria", "batería", "alternador", "arranque", "fusible", "bombillo",
+                  "bobina", "electric", "eléctric"],
+    "accesorios": ["silla", "farola", "techo", "capota", "llanta", "rin", "espejo", "guardafango"],
 }
 
 def infer_system(nombre: str, categoria_original: str | None = None) -> str:

@@ -10,6 +10,8 @@ const SYSTEM_FALLBACK_IMG = {
   transmision: "https://images.unsplash.com/photo-1667339240140-1aee60bea0e5?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
   frenos: "https://images.unsplash.com/photo-1770705950498-d373e33ecb1a?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
   filtros: "https://images.unsplash.com/photo-1776856793085-5cfc8fefb5b8?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+  electrico: "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
+  accesorios: "https://images.unsplash.com/photo-1759850425725-41216a62b6e0?crop=entropy&cs=srgb&fm=jpg&q=80&w=800",
 };
 
 export default function ProductCard({ product }) {
@@ -20,6 +22,8 @@ export default function ProductCard({ product }) {
     transmision: "Transmisión",
     frenos: "Frenos",
     filtros: "Filtros",
+    electrico: "Eléctrico",
+    accesorios: "Accesorios",
   };
   return (
     <article className="industrial-card flex flex-col rounded-sm overflow-hidden" data-testid={`product-card-${product.sku}`}>
