@@ -142,7 +142,7 @@ export default function Home() {
               Ver todo el catálogo <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {Object.keys(SYSTEM_META).map((slug) => {
               const m = SYSTEM_META[slug];
               const Icon = m.icon;
@@ -172,6 +172,15 @@ export default function Home() {
                 </Link>
               );
             })}
+            <Link
+              to="/catalogo"
+              className="industrial-card group rounded-sm overflow-hidden flex flex-col items-center justify-center bg-carbon text-white p-6 text-center"
+              data-testid="system-card-ver-todo"
+            >
+              <ArrowRight className="h-6 w-6 mb-2 text-zetor-red transition-transform group-hover:translate-x-1" />
+              <p className="font-display font-black text-lg uppercase tracking-tight">Ver catálogo completo</p>
+              <span className="mt-1 text-[11px] uppercase tracking-widest text-zinc-400 font-bold">Todas las referencias</span>
+            </Link>
           </div>
         </div>
       </section>
