@@ -103,6 +103,10 @@ class LoginRequest(BaseModel):
     email: EmailStr
     password: str
 
+class ChangePasswordRequest(BaseModel):
+    current_password: str
+    new_password: str = Field(min_length=8)
+
 class ProductBase(BaseModel):
     sku: str
     nombre: str
@@ -189,6 +193,17 @@ async def logout(response: Response):
 @api_router.get("/auth/me")
 async def me(user: dict = Depends(get_current_user)):
     return user
+
+@api_router.put("/auth/change-password")
+async def change_password(payload: ChangePasswordRequest, user: dict = Depends(get_current_user)):
+    full_user = await db.users.find_one({"id": user["id"]})
+    if not full_user or not verify_password(payload.current_password, full_user["password_hash"]):
+        raise HTTPException(status_code=401, detail="Contraseña actual incorrecta")
+    await db.users.update_one(
+        {"id": user["id"]},
+        {"$set": {"password_hash": hash_password(payload.new_password)}},
+    )
+    return {"ok": True}
 
 # ----- Public Catalog Endpoints -----
 @api_router.get("/categories")
