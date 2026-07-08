@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Box, FileText, Inbox, Tag, Eye } from "lucide-react";
+import { Box, FileText, Inbox, Tag, Eye, Lock, Save } from "lucide-react";
 import api from "../../lib/api";
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({ products: 0, leads: 0, posts: 0, categories: 0 });
   const [recent, setRecent] = useState([]);
   const [topPosts, setTopPosts] = useState([]);
+
+  const [pwCurrent, setPwCurrent] = useState("");
+  const [pwNew, setPwNew] = useState("");
+  const [pwConfirm, setPwConfirm] = useState("");
+  const [pwSaving, setPwSaving] = useState(false);
+  const [pwMsg, setPwMsg] = useState(null);
 
   useEffect(() => {
     Promise.all([
@@ -24,6 +30,23 @@ export default function AdminDashboard() {
       setTopPosts(sorted);
     }).catch(() => setTopPosts([]));
   }, []);
+
+  const changePassword = async (e) => {
+    e.preventDefault();
+    setPwMsg(null);
+    if (pwNew.length < 8) { setPwMsg({ type: "error", text: "La nueva contraseña debe tener al menos 8 caracteres" }); return; }
+    if (pwNew !== pwConfirm) { setPwMsg({ type: "error", text: "Las contraseñas no coinciden" }); return; }
+    setPwSaving(true);
+    try {
+      await api.put("/auth/change-password", { current_password: pwCurrent, new_password: pwNew });
+      setPwMsg({ type: "ok", text: "Contraseña actualizada correctamente" });
+      setPwCurrent(""); setPwNew(""); setPwConfirm("");
+    } catch (err) {
+      setPwMsg({ type: "error", text: err?.response?.data?.detail || "Error al cambiar la contraseña" });
+    } finally {
+      setPwSaving(false);
+    }
+  };
 
   const cards = [
     { k: "products", t: "Productos", v: stats.products, icon: Box, c: "bg-zetor-red" },
@@ -94,6 +117,55 @@ export default function AdminDashboard() {
             </ul>
           )}
         </div>
+      </div>
+
+      <div className="mt-6 bg-white border border-zinc-200 rounded-sm p-5 max-w-2xl">
+        <h2 className="font-display font-black uppercase text-xl tracking-tight flex items-center gap-2"><Lock className="h-4 w-4 text-zetor-red" /> Cuenta</h2>
+        <p className="text-sm text-zinc-600 mb-4">Cambia la contraseña de acceso al panel de administración.</p>
+        <form onSubmit={changePassword} className="grid sm:grid-cols-3 gap-3">
+          <input
+            type="password"
+            value={pwCurrent}
+            onChange={(e) => setPwCurrent(e.target.value)}
+            placeholder="Contraseña actual"
+            required
+            className="border border-zinc-300 px-3 py-2 text-sm rounded-sm"
+            data-testid="settings-pw-current"
+          />
+          <input
+            type="password"
+            value={pwNew}
+            onChange={(e) => setPwNew(e.target.value)}
+            placeholder="Nueva contraseña"
+            required
+            minLength={8}
+            className="border border-zinc-300 px-3 py-2 text-sm rounded-sm"
+            data-testid="settings-pw-new"
+          />
+          <input
+            type="password"
+            value={pwConfirm}
+            onChange={(e) => setPwConfirm(e.target.value)}
+            placeholder="Confirmar nueva contraseña"
+            required
+            minLength={8}
+            className="border border-zinc-300 px-3 py-2 text-sm rounded-sm"
+            data-testid="settings-pw-confirm"
+          />
+          <button
+            type="submit"
+            disabled={pwSaving}
+            className="inline-flex items-center justify-center gap-2 bg-carbon text-white font-bold uppercase text-xs tracking-widest px-4 py-2.5 rounded-sm hover:bg-zinc-800 disabled:opacity-60"
+            data-testid="settings-pw-submit"
+          >
+            <Save className="h-3.5 w-3.5" /> {pwSaving ? "Guardando..." : "Cambiar contraseña"}
+          </button>
+        </form>
+        {pwMsg && (
+          <p className={`mt-3 text-xs font-bold uppercase tracking-widest ${pwMsg.type === "ok" ? "text-emerald-600" : "text-zetor-red"}`}>
+            {pwMsg.type === "ok" ? "✓ " : "✗ "}{pwMsg.text}
+          </p>
+        )}
       </div>
     </div>
   );

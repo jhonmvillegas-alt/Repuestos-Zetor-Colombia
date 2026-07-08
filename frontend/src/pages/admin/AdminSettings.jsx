@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Save, Upload, RefreshCw, ImageIcon, Video, Lock } from "lucide-react";
+import { Save, Upload, RefreshCw, ImageIcon, Video } from "lucide-react";
 import api from "../../lib/api";
 
 const SECTIONS = [
@@ -40,12 +40,6 @@ export default function AdminSettings() {
   const [saving, setSaving] = useState(false);
   const [savedKey, setSavedKey] = useState(null);
   const fileRefs = useRef({});
-
-  const [pwCurrent, setPwCurrent] = useState("");
-  const [pwNew, setPwNew] = useState("");
-  const [pwConfirm, setPwConfirm] = useState("");
-  const [pwSaving, setPwSaving] = useState(false);
-  const [pwMsg, setPwMsg] = useState(null);
 
   const load = async () => {
     setLoading(true);
@@ -99,23 +93,6 @@ export default function AdminSettings() {
     }
   };
 
-  const changePassword = async (e) => {
-    e.preventDefault();
-    setPwMsg(null);
-    if (pwNew.length < 8) { setPwMsg({ type: "error", text: "La nueva contraseña debe tener al menos 8 caracteres" }); return; }
-    if (pwNew !== pwConfirm) { setPwMsg({ type: "error", text: "Las contraseñas no coinciden" }); return; }
-    setPwSaving(true);
-    try {
-      await api.put("/auth/change-password", { current_password: pwCurrent, new_password: pwNew });
-      setPwMsg({ type: "ok", text: "Contraseña actualizada correctamente" });
-      setPwCurrent(""); setPwNew(""); setPwConfirm("");
-    } catch (err) {
-      setPwMsg({ type: "error", text: err?.response?.data?.detail || "Error al cambiar la contraseña" });
-    } finally {
-      setPwSaving(false);
-    }
-  };
-
   if (loading) return <p className="text-zinc-500">Cargando configuración...</p>;
 
   return (
@@ -140,55 +117,6 @@ export default function AdminSettings() {
           ✓ Configuración guardada correctamente
         </div>
       )}
-
-      <section className="bg-white border border-zinc-200 rounded-sm p-5 mb-8">
-        <h2 className="font-display font-black uppercase text-xl tracking-tight flex items-center gap-2"><Lock className="h-4 w-4 text-zetor-red" /> Cuenta</h2>
-        <p className="text-sm text-zinc-600 mb-4">Cambia la contraseña de acceso al panel de administración.</p>
-        <form onSubmit={changePassword} className="grid sm:grid-cols-3 gap-3 max-w-2xl">
-          <input
-            type="password"
-            value={pwCurrent}
-            onChange={(e) => setPwCurrent(e.target.value)}
-            placeholder="Contraseña actual"
-            required
-            className="border border-zinc-300 px-3 py-2 text-sm rounded-sm"
-            data-testid="settings-pw-current"
-          />
-          <input
-            type="password"
-            value={pwNew}
-            onChange={(e) => setPwNew(e.target.value)}
-            placeholder="Nueva contraseña"
-            required
-            minLength={8}
-            className="border border-zinc-300 px-3 py-2 text-sm rounded-sm"
-            data-testid="settings-pw-new"
-          />
-          <input
-            type="password"
-            value={pwConfirm}
-            onChange={(e) => setPwConfirm(e.target.value)}
-            placeholder="Confirmar nueva contraseña"
-            required
-            minLength={8}
-            className="border border-zinc-300 px-3 py-2 text-sm rounded-sm"
-            data-testid="settings-pw-confirm"
-          />
-          <button
-            type="submit"
-            disabled={pwSaving}
-            className="inline-flex items-center justify-center gap-2 bg-carbon text-white font-bold uppercase text-xs tracking-widest px-4 py-2.5 rounded-sm hover:bg-zinc-800 disabled:opacity-60 sm:col-span-1"
-            data-testid="settings-pw-submit"
-          >
-            <Save className="h-3.5 w-3.5" /> {pwSaving ? "Guardando..." : "Cambiar contraseña"}
-          </button>
-        </form>
-        {pwMsg && (
-          <p className={`mt-3 text-xs font-bold uppercase tracking-widest ${pwMsg.type === "ok" ? "text-emerald-600" : "text-zetor-red"}`}>
-            {pwMsg.type === "ok" ? "✓ " : "✗ "}{pwMsg.text}
-          </p>
-        )}
-      </section>
 
       <div className="space-y-8">
         {SECTIONS.map((section) => (
